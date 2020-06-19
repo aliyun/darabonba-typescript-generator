@@ -105,16 +105,16 @@ describe('new Generator', function() {
       pkgDir: path.join(__dirname, 'fixtures/comment'),
       ...pkg
     });
+  });
 
-    it('tea should ok', function () {
-      const outputDir = path.join(__dirname, 'output/import');
-      const mainFilePath = path.join(__dirname, 'fixtures/import/main.dara');
-      const pkgContent = fs.readFileSync(path.join(__dirname, 'fixtures/import/Teafile'), 'utf8');
-      const pkg = JSON.parse(pkgContent);
-      check(mainFilePath, outputDir, path.join(__dirname, 'fixtures/import/client.ts'), {
-        pkgDir: path.join(__dirname, 'fixtures/import'),
-        ...pkg
-      });
+  it('tea should ok', function () {
+    const outputDir = path.join(__dirname, 'output/tea');
+    const mainFilePath = path.join(__dirname, 'fixtures/tea/main.tea');
+    const pkgContent = fs.readFileSync(path.join(__dirname, 'fixtures/tea/Teafile'), 'utf8');
+    const pkg = JSON.parse(pkgContent);
+    check(mainFilePath, outputDir, path.join(__dirname, 'fixtures/tea/client.ts'), {
+      pkgDir: path.join(__dirname, 'fixtures/tea'),
+      ...pkg
     });
   });
 });
