@@ -1,4 +1,5 @@
 // This file is auto-generated, don't edit it
+import Source from '@scope/name';
 import { Readable } from 'stream';
 import * as $tea from '@alicloud/tea-typescript';
 
@@ -36,6 +37,7 @@ export class MyModel extends $tea.Model {
   readable: Readable;
   request: $tea.Request;
   existModel: M;
+  moduleField: Source;
   static names(): { [key: string]: string } {
     return {
       stringfield: 'stringfield',
@@ -55,6 +57,7 @@ export class MyModel extends $tea.Model {
       readable: 'readable',
       request: 'request',
       existModel: 'existModel',
+      moduleField: 'moduleField',
     };
   }
 
@@ -77,6 +80,7 @@ export class MyModel extends $tea.Model {
       readable: 'Readable',
       request: $tea.Request,
       existModel: M,
+      moduleField: Source,
     };
   }
 

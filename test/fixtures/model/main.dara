@@ -1,3 +1,5 @@
+import Source;
+
 model M = {};
 
 model MyModel = {
@@ -20,4 +22,5 @@ model MyModel = {
   readable: readable,
   request: $Request,
   existModel: M,
+  moduleField: Source
 };

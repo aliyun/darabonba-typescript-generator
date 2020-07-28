@@ -41,7 +41,12 @@ describe('new Generator', function() {
   it('one model should ok', function () {
     const outputDir = path.join(__dirname, 'output/model');
     const mainFilePath = path.join(__dirname, 'fixtures/model/main.dara');
-    check(mainFilePath, outputDir, path.join(__dirname, 'fixtures/model/client.ts'));
+    const pkgContent = fs.readFileSync(path.join(__dirname, 'fixtures/model/Darafile'), 'utf8');
+    const pkg = JSON.parse(pkgContent);
+    check(mainFilePath, outputDir, path.join(__dirname, 'fixtures/model/client.ts'), {
+      pkgDir: path.join(__dirname, 'fixtures/model'),
+      ...pkg
+    });
   });
 
   it('one api should ok', function () {
