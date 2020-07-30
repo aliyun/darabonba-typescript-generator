@@ -89,6 +89,61 @@ export class MyModel extends $tea.Model {
   }
 }
 
+export class INT extends $tea.Model {
+  int8: number;
+  uint8: number;
+  int16: number;
+  uint16: number;
+  int32: number;
+  uint32: number;
+  int64: number;
+  uint64: number;
+  float: number;
+  double: number;
+  long: number;
+  number: number;
+  integer: number;
+  static names(): { [key: string]: string } {
+    return {
+      int8: 'int8',
+      uint8: 'uint8',
+      int16: 'int16',
+      uint16: 'uint16',
+      int32: 'int32',
+      uint32: 'uint32',
+      int64: 'int64',
+      uint64: 'uint64',
+      float: 'float',
+      double: 'double',
+      long: 'long',
+      number: 'number',
+      integer: 'integer',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      int8: 'number',
+      uint8: 'number',
+      int16: 'number',
+      uint16: 'number',
+      int32: 'number',
+      uint32: 'number',
+      int64: 'number',
+      uint64: 'number',
+      float: 'number',
+      double: 'number',
+      long: 'number',
+      number: 'number',
+      integer: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
 export class MyModelSubmodel extends $tea.Model {
   stringfield: string;
   static names(): { [key: string]: string } {
