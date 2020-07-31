@@ -38,6 +38,7 @@ export class MyModel extends $tea.Model {
   request: $tea.Request;
   existModel: M;
   moduleField: Source;
+  complexList: string[][][];
   static names(): { [key: string]: string } {
     return {
       stringfield: 'stringfield',
@@ -58,6 +59,7 @@ export class MyModel extends $tea.Model {
       request: 'request',
       existModel: 'existModel',
       moduleField: 'moduleField',
+      complexList: 'complexList',
     };
   }
 
@@ -81,6 +83,7 @@ export class MyModel extends $tea.Model {
       request: $tea.Request,
       existModel: M,
       moduleField: Source,
+      complexList: { 'type': 'array', 'itemType': { 'type': 'array', 'itemType': { 'type': 'array', 'itemType': 'string' } } },
     };
   }
 
