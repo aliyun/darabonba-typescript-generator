@@ -1,12 +1,17 @@
 # ChangeLog
 
+## 1.0.3 - 2020-07-31
+
+- support multi-desimon array.
+- fix number types
+
 ## 1.0.2 - 2020-07-28
 
-> Model field type support module.
+- Model field type support module.
 
 ## 1.0.1 - 2020-06-19
 
-> Improve Darabonba TypeScript generator to be compatible with darafile.
+- Improve Darabonba TypeScript generator to be compatible with darafile.
 
 ## 1.0.0 - 2020-06-17
 
