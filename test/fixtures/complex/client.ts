@@ -9,6 +9,7 @@ export class ComplexRequest extends $tea.Model {
   strs: string[];
   header: ComplexRequestHeader;
   Num: number;
+  configs: ComplexRequestConfigs;
   part?: ComplexRequestPart[];
   static names(): { [key: string]: string } {
     return {
@@ -17,6 +18,7 @@ export class ComplexRequest extends $tea.Model {
       strs: 'Strs',
       header: 'header',
       Num: 'Num',
+      configs: 'configs',
       part: 'Part',
     };
   }
@@ -28,6 +30,7 @@ export class ComplexRequest extends $tea.Model {
       strs: { 'type': 'array', 'itemType': 'string' },
       header: ComplexRequestHeader,
       Num: 'number',
+      configs: ComplexRequestConfigs,
       part: { 'type': 'array', 'itemType': ComplexRequestPart },
     };
   }
@@ -48,6 +51,31 @@ export class ComplexRequestHeader extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       content: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ComplexRequestConfigs extends $tea.Model {
+  key: string;
+  value: string[];
+  extra: { [key: string]: string };
+  static names(): { [key: string]: string } {
+    return {
+      key: 'key',
+      value: 'value',
+      extra: 'extra',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      key: 'string',
+      value: { 'type': 'array', 'itemType': 'string' },
+      extra: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
     };
   }
 
@@ -77,9 +105,11 @@ export class ComplexRequestPart extends $tea.Model {
 
 
 export default class Client extends Source {
+  _configs: $Source.Config[];
 
   constructor(config: $Source.Config) {
     super(config);
+    this._configs[0] = config;
   }
 
   async complex1(request: ComplexRequest, client: Source): Promise<$Source.RuntimeObject> {
@@ -212,6 +242,82 @@ export default class Client extends Source {
     return [
       "1"
     ];
+  }
+
+  static arrayAccess(): string {
+    let configs = [
+      "a",
+      "b",
+      "c"
+    ];
+    let config = configs[0];
+    return config;
+  }
+
+  static arrayAccess2(): string {
+    let data = {
+      configs: [
+        "a",
+        "b",
+        "c"
+      ],
+    };
+    let config = data["configs"][0];
+    return config;
+  }
+
+  static arrayAccess3(request: ComplexRequest): string {
+    let configVal = request.configs.value[0];
+    return configVal;
+  }
+
+  static arrayAssign(config: string): string[] {
+    let configs = [
+      "a",
+      "b",
+      "c"
+    ];
+    configs[3] = config;
+    return configs;
+  }
+
+  static arrayAssign2(config: string): string[] {
+    let data = {
+      configs: [
+        "a",
+        "b",
+        "c"
+      ],
+    };
+    data["configs"][3] = config;
+    return data["configs"];
+  }
+
+  static arrayAssign3(request: ComplexRequest, config: string): void {
+    request.configs.value[0] = config;
+  }
+
+  static mapAccess(request: ComplexRequest): string {
+    let configInfo = request.configs.extra["name"];
+    return configInfo;
+  }
+
+  static mapAccess2(request: $Source.Request): string {
+    let configInfo = request.configs.extra["name"];
+    return configInfo;
+  }
+
+  static mapAccess3(): string {
+    let data = {
+      configs: {
+        value: "string",
+      },
+    };
+    return data["configs"]["value"];
+  }
+
+  static mapAssign(request: ComplexRequest, name: string): void {
+    request.configs.extra["name"] = name;
   }
 
   async TemplateString(): Promise<string> {
