@@ -1,5 +1,10 @@
 # ChangeLog
 
+## 1.0.4 - 2020-08-10
+
+- support array access type.
+- fix map access bug
+
 ## 1.0.3 - 2020-07-31
 
 - support multi-desimon array.
