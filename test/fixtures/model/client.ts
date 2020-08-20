@@ -1,16 +1,19 @@
 // This file is auto-generated, don't edit it
-import Source from '@scope/name';
+import Source, * as $Source from '@scope/name';
 import { Readable } from 'stream';
 import * as $tea from '@alicloud/tea-typescript';
 
 export class M extends $tea.Model {
+  subM: MSubM;
   static names(): { [key: string]: string } {
     return {
+      subM: 'subM',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
+      subM: MSubM,
     };
   }
 
@@ -29,6 +32,10 @@ export class MyModel extends $tea.Model {
   subarraymodel: MyModelSubarraymodel[];
   subarray: M[];
   maparray: { [key: string]: any }[];
+  moduleModelMap: { [key: string]: $Source.Request };
+  subModelMap: { [key: string]: MSubM };
+  modelMap: { [key: string]: M };
+  moduleMap: { [key: string]: Source };
   object: {[key: string]: any};
   numberfield: number;
   floatfield: number;
@@ -50,6 +57,10 @@ export class MyModel extends $tea.Model {
       subarraymodel: 'subarraymodel',
       subarray: 'subarray',
       maparray: 'maparray',
+      moduleModelMap: 'moduleModelMap',
+      subModelMap: 'subModelMap',
+      modelMap: 'modelMap',
+      moduleMap: 'moduleMap',
       object: 'object',
       numberfield: 'numberfield',
       floatfield: 'floatfield',
@@ -74,6 +85,10 @@ export class MyModel extends $tea.Model {
       subarraymodel: { 'type': 'array', 'itemType': MyModelSubarraymodel },
       subarray: { 'type': 'array', 'itemType': M },
       maparray: { 'type': 'array', 'itemType': { 'type': 'map', 'keyType': 'string', 'valueType': 'any' } },
+      moduleModelMap: { 'type': 'map', 'keyType': 'string', 'valueType': $Source.Request },
+      subModelMap: { 'type': 'map', 'keyType': 'string', 'valueType': MSubM },
+      modelMap: { 'type': 'map', 'keyType': 'string', 'valueType': M },
+      moduleMap: { 'type': 'map', 'keyType': 'string', 'valueType': Source },
       object: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       numberfield: 'number',
       floatfield: 'number',
@@ -139,6 +154,22 @@ export class INT extends $tea.Model {
       long: 'number',
       number: 'number',
       integer: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class MSubM extends $tea.Model {
+  static names(): { [key: string]: string } {
+    return {
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
     };
   }
 
