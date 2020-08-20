@@ -135,6 +135,10 @@ export default class Client extends Source {
         let mapVal = {
           test: "ok",
         };
+        let moduleModelMapVal : {[key: string ]: $Source.RuntimeObject} = { };
+        let moduleMapVal : {[key: string ]: Source} = { };
+        let modelMapVal : {[key: string ]: ComplexRequest} = { };
+        let subModelMapVal : {[key: string ]: ComplexRequestHeader} = { };
         let version = `/${"2019-01-08"}${this._pathname}`;
         let mapAccess = this._API[version];
         request_.protocol = this._protocol;
