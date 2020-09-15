@@ -168,8 +168,8 @@ export default class Client extends Source {
           "2"
         ]);
         await this.hello(null, null);
-        return $tea.cast<Source.RuntimeObject>({ }, new Source.RuntimeObject({}));
         await this.Complex3(null);
+        return $tea.cast<Source.RuntimeObject>({ }, new Source.RuntimeObject({}));
       } catch (ex) {
         if ($tea.isRetryable(ex)) {
           continue;
@@ -198,7 +198,7 @@ export default class Client extends Source {
     request_.body = Source.body();
     let response_ = await $tea.doAction(request_);
 
-    return {}
+    return { };
   }
 
   async Complex3(request: ComplexRequest): Promise<ComplexRequest> {
@@ -236,6 +236,7 @@ export default class Client extends Source {
   }
 
   static async print(reqeust: $tea.Request, reqs: ComplexRequest[], response: $tea.Response, val: {[key: string ]: string}): Promise<$Source.Request> {
+    return $tea.cast<Source.Request>({ }, new Source.Request({}));
   }
 
   static array0(req: {[key: string]: any}): any[] {
