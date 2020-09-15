@@ -19,7 +19,7 @@
     "url": "git@github.com:aliyun/darabonba-typescript-generator.git"
   },
   "dependencies": {
-    "@darabonba/parser": "^1.2.4"
+    "@darabonba/parser": "^1.2.7"
   },
   "devDependencies": {
     "eslint": "^6.5.1",
