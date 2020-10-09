@@ -1,0 +1,4 @@
+module Module {
+    init() {}
+    function bindingMethod(name: string, arr: [string], m: map[string]string, model_: Model): void;
+}

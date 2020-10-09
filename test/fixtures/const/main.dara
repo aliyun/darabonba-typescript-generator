@@ -1,5 +1,0 @@
-const world = "World!";
-
-static function hello(): string {
-  return `Hello ${__module.world}`;
-}

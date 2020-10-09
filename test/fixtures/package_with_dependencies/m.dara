@@ -1,0 +1,9 @@
+import $source;
+
+module Module {
+    init() {
+        new $source.Model{};
+        new $source.Module();
+        $source.Module.test();
+    }
+}
