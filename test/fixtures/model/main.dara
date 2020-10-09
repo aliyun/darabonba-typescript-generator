@@ -1,52 +1,21 @@
-import Source;
-
-model M {
-  subM: {}
-}
+import $source;
 
 model MyModel {
   stringfield: string,
+  optional?: string,
   bytesfield: bytes,
   stringarrayfield: [ string ],
   mapfield: map[string]string,
   name: string(name='realName'),
-  submodel: {
-    stringfield: string
-  },
-  subarraymodel: [
-    {
-    }
-  ],
   subarray: [ M ],
   maparray: [ map[string]any ],
-  moduleModelMap: map[string]Source.Request,
-  subModelMap: map[string]M.subM,
-  modelMap: map[string]M,
-  moduleMap: map[string]Source,
-  object: object,
   numberfield: integer,
   floatfield: float,
   doublefield: double,
   longfield: long,
   readable: readable,
-  request: $Request,
-  existModel: M,
-  moduleField: Source,
-  complexList: [ [ [ string ] ] ]
-};
-
-model INT = {
-  int8: int8,
-  uint8: uint8,
-  int16: int16,
-  uint16: uint16,
-  int32: int32,
-  uint32: uint32,
-  int64: int64,
-  uint64: uint64,
-  float: float,
-  double: double,
-  long: long,
-  number: number,
-  integer: integer,
-};
+  existModel: $source.Model,
+  moduleField: $source.Module,
+  complexList: [ [ [ string ] ] ],
+  description: string(description='the description')
+}

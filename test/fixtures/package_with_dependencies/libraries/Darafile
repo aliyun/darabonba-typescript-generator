@@ -1,9 +1,9 @@
 {
   "darabonba": "2.0",
   "scope": "darabonba",
-  "name": "main",
+  "name": "import",
   "version": "0.0.1",
-  "libraries": {
-    "source": "darabonba:Import:*"
+  "releases": {
+    "ts": "test:1.0"
   }
 }

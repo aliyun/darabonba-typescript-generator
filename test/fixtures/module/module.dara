@@ -1,0 +1,181 @@
+/**
+ * Module annotation
+ */
+module Module extends Parent implements MyInterface, MyInterface2 {
+    type @key = string;
+
+    /**
+     * init annotation
+     */
+    init() {
+        super();
+    }
+
+    /**
+     * function annotation
+     */
+    function test(name: string): void {
+        
+    }
+
+    static function staticFunction(): void {
+        
+    }
+
+    async function asyncFunction(): void {
+        
+    }
+
+    function bindingMethod(name: string): void;
+
+    function stmts(): void {
+        if (true) {
+
+        } else if (true) {
+
+        } else {
+
+        }
+
+        var name: string = "JacksonTian";
+        name = "Hello";
+
+        while (true) {
+
+        }
+
+        for (; ; ) {
+            break;
+        }
+
+        for (var item of []) {
+            break;
+        }
+
+        try {
+            throw {};
+        } catch (ex) {
+
+        } finally {
+
+        }
+
+        return;
+    }
+
+    function booleanExpr(): boolean {
+        return true;
+    }
+
+    function stringExpr(): string {
+        return 'string';
+    }
+
+    function numberExpr(): int32 {
+        return 1;
+    }
+
+    function nullExpr(): int32 {
+        return null;
+    }
+
+    function templateString(name: string): string {
+        return `hello ${name}!`;
+    }
+
+    async function af(a1: string, a2: string): void {}
+    static function sf(): void {}
+    static async function saf(): void {}
+
+    async function call(): void {
+        templateString("world");
+        af('a1', 'a2');
+        sf();
+        saf();
+    }
+
+    function chain(): Module {
+        return new Module();
+    }
+
+    function logical(): void {
+        true && false;
+        true || false;
+        !true;
+    }
+
+    function binary(): void {
+        1 < 2;
+        1 > 1;
+        1 <= 2;
+        2 >= 3;
+    }
+
+    function array(): [string] {
+        return ['1', '2'];
+    }
+
+    function mapExpr(): map[string]string {
+        var m = {
+            'key2' = 'value2'
+        };
+
+        return {
+            'key' = 'value',
+            ...m
+        };
+    }
+
+    function memberExpr(): void {
+        var m = {
+            'key2' = 'value2'
+        };
+        m['key3'] = 'value';
+        m['key3'];
+        var a = [1];
+        a[0];
+    }
+
+    function modelExpr(): void {
+        new Model{};
+        var m = new Model{
+            name = 'JacksonTian'
+        };
+        m.name;
+        var u = new User{};
+        u.jacksontian.name;
+    }
+
+    function assignExpr(): void {
+        for (var item : string of []) {
+            
+        }
+        for (var i = 0; i < 10; i = 0) {
+
+        }
+    }
+
+    function toExpr(): Model {
+        return {} to Model;
+    }
+
+    function inlineExpr(): void {
+        // append item into list
+        #append([], 'string');
+        // get the list length
+        #length([]);
+    }
+
+    function commentExpr(): void {
+        // comments
+    }
+
+    function vid(): string {
+        return @key;
+    }
+
+    function reservedWord(): string {
+        var function = '';
+        return function;
+    }
+}

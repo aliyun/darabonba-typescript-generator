@@ -1,0 +1,4 @@
+import $source;
+
+model M {
+}
