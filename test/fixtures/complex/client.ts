@@ -231,7 +231,7 @@ export default class Client extends Source {
         ]);
         await this.hello(null, null);
         await this.Complex3(null);
-        return $tea.cast<Source.RuntimeObject>({ }, new Source.RuntimeObject({}));
+        return $tea.cast<$Source.RuntimeObject>({ }, new $Source.RuntimeObject({}));
       } catch (ex) {
         if ($tea.isRetryable(ex)) {
           continue;
@@ -298,7 +298,7 @@ export default class Client extends Source {
   }
 
   static async print(reqeust: $tea.Request, reqs: ComplexRequest[], response: $tea.Response, val: {[key: string ]: string}): Promise<$Source.Request> {
-    return $tea.cast<Source.Request>({ }, new Source.Request({}));
+    return $tea.cast<$Source.Request>({ }, new $Source.Request({}));
   }
 
   static array0(req: {[key: string]: any}): any[] {
