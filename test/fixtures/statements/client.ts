@@ -65,7 +65,7 @@ export default class Client {
   static helloDeclare(): void {
     let hello = "world";
     let helloNull : string = null;
-    hello = "hehe";
+    hello = "\"hehe\"";
   }
 
 }

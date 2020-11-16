@@ -30,7 +30,7 @@ static function helloWhile() : void {
 static function helloDeclare() : void {
   var hello = "world";
   var helloNull: string = null;
-  hello = "hehe";
+  hello = '"hehe"';
 }
 
 init();
