@@ -239,6 +239,10 @@ export default class Client extends Source {
     return $tea.cast<$Source.Request>({ }, new $Source.Request({}));
   }
 
+  static subConf(conf: $Source.RequestConfigs): $Source.RequestConfigsSubConf {
+    return conf.subConf;
+  }
+
   static array0(req: {[key: string]: any}): any[] {
     return [ ];
   }
