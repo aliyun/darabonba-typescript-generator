@@ -27,6 +27,10 @@ model Request = {
   configs: {
     key: string,
     value: [ string ],
-    extra: map[string] string
+    extra: map[string] string,
+    subConf: {
+      key: string,
+      value: string
+    }
   },
 }

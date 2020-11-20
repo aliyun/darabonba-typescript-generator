@@ -122,6 +122,11 @@ api Complex3(request: ComplexRequest): ComplexRequest {
   };
 }
 
+
+static function subConf(conf: Source.Request.configs): Source.Request.configs.subConf {
+  return conf.subConf;
+}
+
 static function array0(req: object): [ any ] {
   return [];
 }
