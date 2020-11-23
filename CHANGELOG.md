@@ -1,5 +1,9 @@
 # ChangeLog
 
+## 1.1.0 - 2020-11-23
+
+- fix the module name's generate error .
+
 ## 1.1.0 - 2020-11-17
 
 - support executable option.
