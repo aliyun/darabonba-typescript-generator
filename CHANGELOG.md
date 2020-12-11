@@ -1,6 +1,10 @@
 # ChangeLog
 
-## 1.1.0 - 2020-11-23
+## 1.1.2 - 2020-12-11
+
+- fix quotes in string generate error .
+
+## 1.1.1 - 2020-11-23
 
 - fix the module name's generate error .
 
