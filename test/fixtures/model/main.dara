@@ -1,6 +1,7 @@
 import Source;
 
 model M {
+  sub-m: {},
   subM: {}
 }
 
@@ -21,6 +22,7 @@ model MyModel {
   maparray: [ map[string]any ],
   moduleModelMap: map[string]Source.Request,
   subModelMap: map[string]M.subM,
+  subModelMap2: map[string]M.sub-m,
   modelMap: map[string]M,
   moduleMap: map[string]Source,
   object: object,

@@ -1,17 +1,32 @@
 import Source;
-import LocalSource;
+import Local-Source;
 
 type @id = [ string ];
 type @str = string;
 
+model M{
+    a: Local-Source.Request,
+    b: Local-Source
+}
+
 init(id: [ string ], str: string) {
     @id = id;
     @str = str;
+    var source = new Local-Source();
+    var request = new Local-Source.Request{
+        accesskey = "accesskey",
+        region = "region",
+    };
+    test(source, request);
+}
+
+function test(source: Local-Source, request: Local-Source.Request): Local-Source.Request{
+    return request;
 }
 
 static function Sample(client: Source): void {
     var runtime = new Source.RuntimeObject{};
-    var request = new LocalSource.Request{
+    var request = new Local-Source.Request{
         accesskey = "accesskey",
         region = "region",
     };

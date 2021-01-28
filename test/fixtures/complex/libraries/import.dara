@@ -31,6 +31,10 @@ model Request = {
     subConf: {
       key: string,
       value: string
+    },
+    path-name: {
+      key: string,
+      value: string
     }
   },
 }

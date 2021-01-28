@@ -10,6 +10,7 @@ export class ComplexRequest extends $tea.Model {
   header: ComplexRequestHeader;
   Num: number;
   configs: ComplexRequestConfigs;
+  'path-name'?: ComplexRequestPath_name;
   part?: ComplexRequestPart[];
   static names(): { [key: string]: string } {
     return {
@@ -19,6 +20,7 @@ export class ComplexRequest extends $tea.Model {
       header: 'header',
       Num: 'Num',
       configs: 'configs',
+      'path-name': 'path-name',
       part: 'Part',
     };
   }
@@ -31,6 +33,7 @@ export class ComplexRequest extends $tea.Model {
       header: ComplexRequestHeader,
       Num: 'number',
       configs: ComplexRequestConfigs,
+      'path-name': ComplexRequestPath_name,
       part: { 'type': 'array', 'itemType': ComplexRequestPart },
     };
   }
@@ -84,17 +87,36 @@ export class ComplexRequestConfigs extends $tea.Model {
   }
 }
 
-export class ComplexRequestPart extends $tea.Model {
-  partNumber?: string;
+export class ComplexRequestPath_name extends $tea.Model {
+  'path-key': string;
   static names(): { [key: string]: string } {
     return {
-      partNumber: 'PartNumber',
+      'path-key': 'path-key',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
-      partNumber: 'string',
+      'path-key': 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ComplexRequestPart extends $tea.Model {
+  'part-number'?: string;
+  static names(): { [key: string]: string } {
+    return {
+      'part-number': 'PartNumber',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      'part-number': 'string',
     };
   }
 
@@ -278,6 +300,22 @@ export default class Client extends Source {
   static arrayAccess3(request: ComplexRequest): string {
     let configVal = request.configs.value[0];
     return configVal;
+  }
+
+  static pathName(request: ComplexRequest): string {
+    let part = request.part[0];
+    let part2 = new ComplexRequestPart({
+      'part-number': "1234",
+    });
+    let part_3 = new $Source.RequestConfigsPath_name({
+      key: "12",
+      value: "34",
+    });
+    let part_4 = new ComplexRequestPath_name({
+      'path-key': "12",
+    });
+    let value = part_3.value;
+    return part.part_number;
   }
 
   static arrayAssign(config: string): string[] {

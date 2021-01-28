@@ -4,15 +4,18 @@ import { Readable } from 'stream';
 import * as $tea from '@alicloud/tea-typescript';
 
 export class M extends $tea.Model {
+  'sub-m': MSub_m;
   subM: MSubM;
   static names(): { [key: string]: string } {
     return {
+      'sub-m': 'sub-m',
       subM: 'subM',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
+      'sub-m': MSub_m,
       subM: MSubM,
     };
   }
@@ -34,6 +37,7 @@ export class MyModel extends $tea.Model {
   maparray: { [key: string]: any }[];
   moduleModelMap: { [key: string]: $Source.Request };
   subModelMap: { [key: string]: MSubM };
+  subModelMap2: { [key: string]: MSub_m };
   modelMap: { [key: string]: M };
   moduleMap: { [key: string]: Source };
   object: {[key: string]: any};
@@ -59,6 +63,7 @@ export class MyModel extends $tea.Model {
       maparray: 'maparray',
       moduleModelMap: 'moduleModelMap',
       subModelMap: 'subModelMap',
+      subModelMap2: 'subModelMap2',
       modelMap: 'modelMap',
       moduleMap: 'moduleMap',
       object: 'object',
@@ -87,6 +92,7 @@ export class MyModel extends $tea.Model {
       maparray: { 'type': 'array', 'itemType': { 'type': 'map', 'keyType': 'string', 'valueType': 'any' } },
       moduleModelMap: { 'type': 'map', 'keyType': 'string', 'valueType': $Source.Request },
       subModelMap: { 'type': 'map', 'keyType': 'string', 'valueType': MSubM },
+      subModelMap2: { 'type': 'map', 'keyType': 'string', 'valueType': MSub_m },
       modelMap: { 'type': 'map', 'keyType': 'string', 'valueType': M },
       moduleMap: { 'type': 'map', 'keyType': 'string', 'valueType': Source },
       object: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
@@ -154,6 +160,22 @@ export class INT extends $tea.Model {
       long: 'number',
       number: 'number',
       integer: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class MSub_m extends $tea.Model {
+  static names(): { [key: string]: string } {
+    return {
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
     };
   }
 

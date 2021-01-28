@@ -5,6 +5,6 @@
   "main": "./main.dara",
   "libraries": {
     "Source": "darabonba:Import:*",
-    "LocalSource": "./localLib"
+    "Local-Source": "./localLib"
   }
 }

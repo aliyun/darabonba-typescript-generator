@@ -24,9 +24,12 @@ model ComplexRequest = {
     value: [ string ],
     extra: map[string] string
   },
+  path-name?: {
+    path-key: string,
+  },
   part?: [
     {
-      partNumber?: string(description='PartNumber', name='PartNumber')
+      part-number?: string(description='PartNumber', name='PartNumber')
     }
   ](description='Part', name='Part'),
 }
@@ -152,6 +155,23 @@ static function arrayAccess2(): string {
 static function arrayAccess3(request: ComplexRequest): string {
   var configVal = request.configs.value[0];
   return configVal;
+}
+
+
+static function pathName(request: ComplexRequest): string {
+  var part = request.part[0];
+  var part2 = new ComplexRequest.part{
+    part-number = '1234'
+  };
+  var part-3 = new Source.Request.configs.path-name{
+    key = '12',
+    value = '34'
+  };
+  var part-4 = new ComplexRequest.path-name{
+    path-key = '12',
+  };
+  var value = part-3.value;
+  return part.part-number;
 }
 
 static function arrayAssign(config: string): [ string ] {
