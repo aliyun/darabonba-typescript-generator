@@ -1,5 +1,9 @@
 # ChangeLog
 
+## 1.1.3 - 2021-11-08
+
+- fix array type in map generate error .
+
 ## 1.1.2 - 2020-12-11
 
 - fix quotes in string generate error .
