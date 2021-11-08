@@ -32,7 +32,9 @@ export class MyModel extends $tea.Model {
   subarraymodel: MyModelSubarraymodel[];
   subarray: M[];
   maparray: { [key: string]: any }[];
+  modelArrayMap: { [key: string]: M[] };
   moduleModelMap: { [key: string]: $Source.Request };
+  moduleModelArrayMap: { [key: string]: $Source.Request[] };
   subModelMap: { [key: string]: MSubM };
   modelMap: { [key: string]: M };
   moduleMap: { [key: string]: Source };
@@ -57,7 +59,9 @@ export class MyModel extends $tea.Model {
       subarraymodel: 'subarraymodel',
       subarray: 'subarray',
       maparray: 'maparray',
+      modelArrayMap: 'modelArrayMap',
       moduleModelMap: 'moduleModelMap',
+      moduleModelArrayMap: 'moduleModelArrayMap',
       subModelMap: 'subModelMap',
       modelMap: 'modelMap',
       moduleMap: 'moduleMap',
@@ -85,7 +89,9 @@ export class MyModel extends $tea.Model {
       subarraymodel: { 'type': 'array', 'itemType': MyModelSubarraymodel },
       subarray: { 'type': 'array', 'itemType': M },
       maparray: { 'type': 'array', 'itemType': { 'type': 'map', 'keyType': 'string', 'valueType': 'any' } },
+      modelArrayMap: { 'type': 'map', 'keyType': 'string', 'valueType': M[] },
       moduleModelMap: { 'type': 'map', 'keyType': 'string', 'valueType': $Source.Request },
+      moduleModelArrayMap: { 'type': 'map', 'keyType': 'string', 'valueType': $Source.Request[] },
       subModelMap: { 'type': 'map', 'keyType': 'string', 'valueType': MSubM },
       modelMap: { 'type': 'map', 'keyType': 'string', 'valueType': M },
       moduleMap: { 'type': 'map', 'keyType': 'string', 'valueType': Source },
