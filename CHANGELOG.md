@@ -1,5 +1,9 @@
 # ChangeLog
 
+## 1.1.4 - 2022-01-12
+
+- fix complex type in map generate error .
+
 ## 1.1.3 - 2021-11-08
 
 - fix array type in map generate error .
