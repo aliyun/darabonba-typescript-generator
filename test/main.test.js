@@ -22,11 +22,11 @@ function check(mainFilePath, outputDir, expectedPath, pkgInfo = {}) {
   assert.deepStrictEqual(fs.readFileSync(clientPath, 'utf8'), expected);
 }
 
-describe('new Generator', function() {
+describe('new Generator', function () {
   it('must pass in outputDir', function () {
     assert.throws(function () {
       new Generator({});
-    }, function(err) {
+    }, function (err) {
       assert.deepStrictEqual(err.message, '`option.outputDir` should not empty');
       return true;
     });
@@ -119,6 +119,17 @@ describe('new Generator', function() {
     const pkg = JSON.parse(pkgContent);
     check(mainFilePath, outputDir, path.join(__dirname, 'fixtures/tea/client.ts'), {
       pkgDir: path.join(__dirname, 'fixtures/tea'),
+      ...pkg
+    });
+  });
+
+  it('typedef should ok', function () {
+    const outputDir = path.join(__dirname, 'output/typedef');
+    const mainFilePath = path.join(__dirname, 'fixtures/typedef/main.dara');
+    const pkgContent = fs.readFileSync(path.join(__dirname, 'fixtures/typedef/Darafile'), 'utf8');
+    const pkg = JSON.parse(pkgContent);
+    check(mainFilePath, outputDir, path.join(__dirname, 'fixtures/typedef/client.ts'), {
+      pkgDir: path.join(__dirname, 'fixtures/typedef'),
       ...pkg
     });
   });
