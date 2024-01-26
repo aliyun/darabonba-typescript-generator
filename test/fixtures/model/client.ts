@@ -3,6 +3,57 @@ import Source, * as $Source from '@scope/name';
 import { Readable } from 'stream';
 import * as $tea from '@alicloud/tea-typescript';
 
+export class MSubM extends $tea.Model {
+  static names(): { [key: string]: string } {
+    return {
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class MyModelSubmodel extends $tea.Model {
+  stringfield: string;
+  static names(): { [key: string]: string } {
+    return {
+      stringfield: 'stringfield',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      stringfield: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class MyModelSubarraymodel extends $tea.Model {
+  static names(): { [key: string]: string } {
+    return {
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
 export class M extends $tea.Model {
   subM: MSubM;
   static names(): { [key: string]: string } {
@@ -160,57 +211,6 @@ export class INT extends $tea.Model {
       long: 'number',
       number: 'number',
       integer: 'number',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class MSubM extends $tea.Model {
-  static names(): { [key: string]: string } {
-    return {
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class MyModelSubmodel extends $tea.Model {
-  stringfield: string;
-  static names(): { [key: string]: string } {
-    return {
-      stringfield: 'stringfield',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      stringfield: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class MyModelSubarraymodel extends $tea.Model {
-  static names(): { [key: string]: string } {
-    return {
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
     };
   }
 

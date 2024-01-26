@@ -112,6 +112,44 @@ describe('new Generator', function() {
     });
   });
 
+  it('add builtin should ok', function () {
+    const outputDir = path.join(__dirname, 'output/builtin');
+    const mainFilePath = path.join(__dirname, 'fixtures/builtin/main.dara');
+    check(mainFilePath, outputDir, path.join(__dirname, 'fixtures/builtin/client.ts'));
+  });
+
+  it('multi dara should ok', function () {
+    const outputDir = path.join(__dirname, 'output/multi');
+    const mainFilePath = path.join(__dirname, 'fixtures/multi/tea/sdk.dara');
+    const pkgContent = fs.readFileSync(path.join(__dirname, 'fixtures/multi/tea/Darafile'), 'utf8');
+    const pkg = JSON.parse(pkgContent);
+    const generator = new Generator({
+      outputDir,
+      pkgDir: path.join(__dirname, 'fixtures/multi/tea'),
+      ...pkg
+    });
+  
+    const dsl = fs.readFileSync(mainFilePath, 'utf8');
+    const ast = DSL.parse(dsl, mainFilePath);
+    generator.visit(ast);
+    const mainPath = path.join(outputDir, 'src/client.ts');
+    const apiPath = path.join(outputDir, 'src/api.ts');
+    const modelPath = path.join(outputDir, 'src/model/user.ts');
+    const utilPath = path.join(outputDir, 'src/lib/util.ts');
+    const expectedMainPath = path.join(__dirname, 'fixtures/multi/sdk/client.ts');
+    const expectedModelPath = path.join(__dirname, 'fixtures/multi/sdk/user.ts');
+    const expectedUtilPath = path.join(__dirname, 'fixtures/multi/sdk/util.ts');
+    const expectedApiPath = path.join(__dirname, 'fixtures/multi/sdk/api.ts');
+    const expectedMain = fs.readFileSync(expectedMainPath, 'utf8');
+    assert.deepStrictEqual(fs.readFileSync(mainPath, 'utf8'), expectedMain);
+    const expectedModel = fs.readFileSync(expectedModelPath, 'utf8');
+    assert.deepStrictEqual(fs.readFileSync(modelPath, 'utf8'), expectedModel);
+    const expectedUtil = fs.readFileSync(expectedUtilPath, 'utf8');
+    assert.deepStrictEqual(fs.readFileSync(utilPath, 'utf8'), expectedUtil);
+    const expectedApi = fs.readFileSync(expectedApiPath, 'utf8');
+    assert.deepStrictEqual(fs.readFileSync(apiPath, 'utf8'), expectedApi);
+  });
+
   it('tea should ok', function () {
     const outputDir = path.join(__dirname, 'output/tea');
     const mainFilePath = path.join(__dirname, 'fixtures/tea/main.tea');

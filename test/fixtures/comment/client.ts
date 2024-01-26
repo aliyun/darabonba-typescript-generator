@@ -121,18 +121,20 @@ export default class Client {
       // another runtime comment
     }
 
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+    let _retriesAttempted = 0;
+    let _lastRequest = null, _lastResponse = null;
+    let _context = new $tea.RetryPolicyContext({
+      retriesAttempted: _retriesAttempted,
+    });
+    while ($tea.shouldRetry(_runtime['retryOptions'], _context)) {
+      if (_retriesAttempted > 0) {
+        let _backoffTime = $tea.getBackoffDelay(_runtime['retryOptions'], _context);
         if (_backoffTime > 0) {
           await $tea.sleep(_backoffTime);
         }
       }
 
-      _retryTimes = _retryTimes + 1;
+      _retriesAttempted = _retriesAttempted + 1;
       try {
         let request_ = new $tea.Request();
         // new model instance comment
@@ -146,22 +148,26 @@ export default class Client {
         let num = 123;
         // static function call comment
         Client.staticFunc();
-        _lastRequest = request_;
         let response_ = await $tea.doAction(request_, _runtime);
+        _lastRequest = request_;
+        _lastResponse = response_;
 
         // static async function call
         await Client.testFunc();
         // return comment
         return ;
       } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
+        _context = new $tea.RetryPolicyContext({
+          retriesAttempted : _retriesAttempted,
+          lastRequest : _lastRequest,
+          lastResponse : _lastResponse,
+          exception : ex,
+        });
+        continue;
       }
     }
 
-    throw $tea.newUnretryableError(_lastRequest);
+    throw $tea.newUnretryableError(_context);
   }
 
   // testAPI2 comment
@@ -173,18 +179,20 @@ export default class Client {
       // runtime back comment two
     }
 
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+    let _retriesAttempted = 0;
+    let _lastRequest = null, _lastResponse = null;
+    let _context = new $tea.RetryPolicyContext({
+      retriesAttempted: _retriesAttempted,
+    });
+    while ($tea.shouldRetry(_runtime['retryOptions'], _context)) {
+      if (_retriesAttempted > 0) {
+        let _backoffTime = $tea.getBackoffDelay(_runtime['retryOptions'], _context);
         if (_backoffTime > 0) {
           await $tea.sleep(_backoffTime);
         }
       }
 
-      _retryTimes = _retryTimes + 1;
+      _retriesAttempted = _retriesAttempted + 1;
       try {
         let request_ = new $tea.Request();
         // new model instance comment
@@ -202,19 +210,23 @@ export default class Client {
         // api function call comment
         await this.testAPI();
         // back comment
-        _lastRequest = request_;
         let response_ = await $tea.doAction(request_, _runtime);
+        _lastRequest = request_;
+        _lastResponse = response_;
 
         // empty return comment
       } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
+        _context = new $tea.RetryPolicyContext({
+          retriesAttempted : _retriesAttempted,
+          lastRequest : _lastRequest,
+          lastResponse : _lastResponse,
+          exception : ex,
+        });
+        continue;
       }
     }
 
-    throw $tea.newUnretryableError(_lastRequest);
+    throw $tea.newUnretryableError(_context);
   }
 
   static staticFunc(): void {

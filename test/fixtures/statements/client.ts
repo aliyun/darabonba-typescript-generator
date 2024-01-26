@@ -50,7 +50,7 @@ export default class Client {
 
   static helloForBreak(): void {
 
-    for (let item of [ ]) {
+    for(let item of [ ]) {
       break;
     }
   }
