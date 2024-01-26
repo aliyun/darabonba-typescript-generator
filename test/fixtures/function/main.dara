@@ -6,7 +6,7 @@ static function helloMap(): map[string]string {
   var m: map[string]string = {};
   return {
     key = 'value',
-    key-1 = 'value-1',
+    'key-1' = 'value-1',
     ...m,
   };
 }
@@ -24,3 +24,10 @@ static async function helloParams(a: string, b: string): void {
 
 // interface mode
 static async function helloInterface(): void;
+static async function iteratorFunc(): asyncIterator[string];
+static async function iteratorFunc2(): iterator[string] {
+  var it:asyncIterator[string] = iteratorFunc();
+  for(var test : it) {
+    yield test;
+  }
+}

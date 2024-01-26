@@ -1,46 +1,18 @@
 // This file is auto-generated, don't edit it
-/**
- top annotation
-*/
+import User from './model/user';
+import Util from './lib/util';
 import * as $tea from '@alicloud/tea-typescript';
-
-/**
-  TestModel
-*/
-export class Test extends $tea.Model {
-  test: string;
-  static names(): { [key: string]: string } {
-    return {
-      test: 'test',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      test: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
 
 
 export default class Client {
-  _a: string;
 
-  /**
-    Init Func
-  */
   constructor() {
   }
 
-  /**
-    testAPI
-  */
-  async testAPI(): Promise<void> {
-    let _runtime: { [key: string]: any } = { }
+  async test3(): Promise<number> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+    }
 
     let _retriesAttempted = 0;
     let _lastRequest = null, _lastResponse = null;
@@ -58,11 +30,19 @@ export default class Client {
       _retriesAttempted = _retriesAttempted + 1;
       try {
         let request_ = new $tea.Request();
+        request_.protocol = "https";
+        request_.method = "DELETE";
+        request_.pathname = "/";
+        request_.headers = {
+          host: "test.aliyun.com",
+          accept: "application/json",
+        };
+        request_.query = Util.getQuery();
         let response_ = await $tea.doAction(request_, _runtime);
         _lastRequest = request_;
         _lastResponse = response_;
 
-        return ;
+        return response_.statusCode;
       } catch (ex) {
         _context = new $tea.RetryPolicyContext({
           retriesAttempted : _retriesAttempted,
@@ -77,10 +57,5 @@ export default class Client {
     throw $tea.newUnretryableError(_context);
   }
 
-  /**
-    testFunc
-  */
-  static async testFunc(): Promise<void> {
-  }
 
 }

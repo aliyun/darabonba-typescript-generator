@@ -22,18 +22,20 @@ export default class Client {
   async helloRuntime(): Promise<void> {
     let _runtime: { [key: string]: any } = { }
 
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+    let _retriesAttempted = 0;
+    let _lastRequest = null, _lastResponse = null;
+    let _context = new $tea.RetryPolicyContext({
+      retriesAttempted: _retriesAttempted,
+    });
+    while ($tea.shouldRetry(_runtime['retryOptions'], _context)) {
+      if (_retriesAttempted > 0) {
+        let _backoffTime = $tea.getBackoffDelay(_runtime['retryOptions'], _context);
         if (_backoffTime > 0) {
           await $tea.sleep(_backoffTime);
         }
       }
 
-      _retryTimes = _retryTimes + 1;
+      _retriesAttempted = _retriesAttempted + 1;
       try {
         let request_ = new $tea.Request();
         request_.method = "GET";
@@ -41,19 +43,23 @@ export default class Client {
         request_.headers = {
           host: "www.test.com",
         };
-        _lastRequest = request_;
         let response_ = await $tea.doAction(request_, _runtime);
+        _lastRequest = request_;
+        _lastResponse = response_;
 
         return ;
       } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
+        _context = new $tea.RetryPolicyContext({
+          retriesAttempted : _retriesAttempted,
+          lastRequest : _lastRequest,
+          lastResponse : _lastResponse,
+          exception : ex,
+        });
+        continue;
       }
     }
 
-    throw $tea.newUnretryableError(_lastRequest);
+    throw $tea.newUnretryableError(_context);
   }
 
 

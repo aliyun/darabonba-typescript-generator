@@ -3,43 +3,6 @@ import Source, * as $Source from '@scope/name';
 import { Readable } from 'stream';
 import * as $tea from '@alicloud/tea-typescript';
 
-export class ComplexRequest extends $tea.Model {
-  accessKey: string;
-  body: Readable;
-  strs: string[];
-  header: ComplexRequestHeader;
-  Num: number;
-  configs: ComplexRequestConfigs;
-  part?: ComplexRequestPart[];
-  static names(): { [key: string]: string } {
-    return {
-      accessKey: 'accessKey',
-      body: 'Body',
-      strs: 'Strs',
-      header: 'header',
-      Num: 'Num',
-      configs: 'configs',
-      part: 'Part',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      accessKey: 'string',
-      body: 'Readable',
-      strs: { 'type': 'array', 'itemType': 'string' },
-      header: ComplexRequestHeader,
-      Num: 'number',
-      configs: ComplexRequestConfigs,
-      part: { 'type': 'array', 'itemType': ComplexRequestPart },
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
 export class ComplexRequestHeader extends $tea.Model {
   content: string;
   static names(): { [key: string]: string } {
@@ -103,6 +66,61 @@ export class ComplexRequestPart extends $tea.Model {
   }
 }
 
+export class ComplexRequest extends $tea.Model {
+  accessKey: string;
+  body: Readable;
+  strs: string[];
+  header: ComplexRequestHeader;
+  Num: number;
+  configs: ComplexRequestConfigs;
+  part?: ComplexRequestPart[];
+  static names(): { [key: string]: string } {
+    return {
+      accessKey: 'accessKey',
+      body: 'Body',
+      strs: 'Strs',
+      header: 'header',
+      Num: 'Num',
+      configs: 'configs',
+      part: 'Part',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      accessKey: 'string',
+      body: 'Readable',
+      strs: { 'type': 'array', 'itemType': 'string' },
+      header: ComplexRequestHeader,
+      Num: 'number',
+      configs: ComplexRequestConfigs,
+      part: { 'type': 'array', 'itemType': ComplexRequestPart },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class Err1 extends $tea.BaseError {
+  data: { [key: string]: string };
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+    this.data = map.data;
+  }
+}
+
+export class Err2 extends $tea.BaseError {
+  accessErrMessage: string;
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+    this.accessErrMessage = map.accessErrMessage;
+  }
+}
+
 
 export default class Client extends Source {
   _configs: $Source.Config[];
@@ -117,18 +135,20 @@ export default class Client extends Source {
       timeouted: "retry",
     }
 
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+    let _retriesAttempted = 0;
+    let _lastRequest = null, _lastResponse = null;
+    let _context = new $tea.RetryPolicyContext({
+      retriesAttempted: _retriesAttempted,
+    });
+    while ($tea.shouldRetry(_runtime['retryOptions'], _context)) {
+      if (_retriesAttempted > 0) {
+        let _backoffTime = $tea.getBackoffDelay(_runtime['retryOptions'], _context);
         if (_backoffTime > 0) {
           await $tea.sleep(_backoffTime);
         }
       }
 
-      _retryTimes = _retryTimes + 1;
+      _retriesAttempted = _retriesAttempted + 1;
       try {
         let request_ = new $tea.Request();
         let name = "complex";
@@ -152,8 +172,9 @@ export default class Client extends Source {
           ...request.header,
         });
         request_.body = Source.body();
-        _lastRequest = request_;
         let response_ = await $tea.doAction(request_, _runtime);
+        _lastRequest = request_;
+        _lastResponse = response_;
 
         if (true && true) {
           return null;
@@ -171,14 +192,17 @@ export default class Client extends Source {
         await this.Complex3(null);
         return $tea.cast<$Source.RuntimeObject>({ }, new $Source.RuntimeObject({}));
       } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
+        _context = new $tea.RetryPolicyContext({
+          retriesAttempted : _retriesAttempted,
+          lastRequest : _lastRequest,
+          lastResponse : _lastResponse,
+          exception : ex,
+        });
+        continue;
       }
     }
 
-    throw $tea.newUnretryableError(_lastRequest);
+    throw $tea.newUnretryableError(_context);
   }
 
   async Complex2(request: ComplexRequest, str: string[], val: {[key: string ]: string}): Promise<{[key: string]: any}> {
@@ -341,20 +365,67 @@ export default class Client extends Source {
   async tryCatch(): Promise<void> {
     try {
       let str = await this.TemplateString();
-    } catch (err) {
-      let error = err;
+    } catch (__err) {
+      if (__err instanceof $tea.BaseError) {
+        const err = __err;
+        let error = err;
+      }
     } finally {
       let final = "ok";
     }    
     try {
       let strNoFinal = await this.TemplateString();
-    } catch (e) {
-      let errorNoFinal = e;
+    } catch (__err) {
+      if (__err instanceof $tea.BaseError) {
+        const e = __err;
+        let errorNoFinal = e;
+      }
     }    
     try {
       let strNoCatch = await this.TemplateString();
     } finally {
       let finalNoCatch = "ok";
+    }    
+  }
+
+  async multiTryCatch(a: number): Promise<void> {
+    try {
+      if (a > 0) {
+        throw new Err1({
+          name: "str",
+          code: "str",
+          data: {
+            key1: "str",
+          },
+        });
+      } else if (a == 0) {
+        throw new Err2({
+          name: "str",
+          code: "str",
+          accessErrMessage: "str2",
+        });
+      } else {
+        throw new $tea.BaseError({
+          name: "str",
+          code: "str",
+        });
+      }
+
+    } catch (__err) {
+      if (__err instanceof Err1) {
+        const err = __err;
+        console.log(err.name);
+      }
+      if (__err instanceof Err2) {
+        const err = __err;
+        console.log(err.name);
+      }
+      if (__err instanceof $tea.BaseError) {
+        const err = __err;
+        console.log(err.name);
+      }
+    } finally {
+      let final = "ok";
     }    
   }
 
