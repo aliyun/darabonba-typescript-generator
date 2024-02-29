@@ -15,8 +15,8 @@ export default class Client {
   }
 
 
-  async *test3(){
-    let it = await Util.test1();
+  async *test3(): AsyncGenerator<string, any, unknown> {
+    let it = Util.test1();
 
     for(let test of it) {
       yield test;

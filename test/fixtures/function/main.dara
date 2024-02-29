@@ -25,7 +25,7 @@ static async function helloParams(a: string, b: string): void {
 // interface mode
 static async function helloInterface(): void;
 static async function iteratorFunc(): asyncIterator[string];
-static async function iteratorFunc2(): iterator[string] {
+static async function iteratorFunc2(): asyncIterator[string] {
   var it:asyncIterator[string] = iteratorFunc();
   for(var test : it) {
     yield test;

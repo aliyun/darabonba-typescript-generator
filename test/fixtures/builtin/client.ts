@@ -33,7 +33,7 @@ export default class Client {
   static async bytesTest(args: string[]): Promise<void> {
     let fullStr = args.join(",");
     let data = Buffer.from(fullStr, "utf8");
-    let newFullStr = data.toString(2);
+    let newFullStr = data.toString("utf8");
     if (fullStr != newFullStr) {
       return ;
     }

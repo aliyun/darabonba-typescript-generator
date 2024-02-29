@@ -4,7 +4,7 @@ import * as $tea from '@alicloud/tea-typescript';
 
 export default class Client {
 
-  static async *test1(){
+  static *test1(): Generator<string, any, unknown> {
     throw new Error('Un-implemented!');
   }
 

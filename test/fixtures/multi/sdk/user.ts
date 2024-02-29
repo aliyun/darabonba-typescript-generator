@@ -28,8 +28,8 @@ export class Info extends $tea.Model {
 
 export default class Client {
 
-  static async *test(){
-    let it = await Util.test1();
+  static async *test(): AsyncGenerator<string, any, unknown> {
+    let it = Util.test1();
 
     for(let test of it) {
       yield test;
