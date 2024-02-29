@@ -1,5 +1,5 @@
 // This file is auto-generated, don't edit it
-import * as $tea from '@alicloud/tea-typescript';
+import * as $dara from '@darabonba/typescript';
 
 
 export default class Client {
@@ -8,7 +8,7 @@ export default class Client {
   }
 
   async hello(): Promise<void> {
-    let request_ = new $tea.Request();
+    let request_ = new $dara.Request();
     request_.method = "GET";
     request_.pathname = "/";
     request_.headers = {
@@ -18,10 +18,10 @@ export default class Client {
       request_.headers["host"] = "www.test2.com";
     }
 
-    let response_ = await $tea.doAction(request_);
+    let response_ = await $dara.doAction(request_);
 
     if (true) {
-      throw $tea.newRetryError(request_, response_);
+      throw $dara.newRetryError(request_, response_);
     } else {
       true;
     }
@@ -45,7 +45,7 @@ export default class Client {
   }
 
   static helloThrow(): void {
-    throw $tea.newError({ });
+    throw $dara.newError({ });
   }
 
   static helloForBreak(): void {

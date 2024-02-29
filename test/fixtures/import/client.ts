@@ -1,7 +1,7 @@
 // This file is auto-generated, don't edit it
 import Source, * as $Source from '@scope/module';
 import LocalSource, * as $LocalSource from '@scope/localModule';
-import * as $tea from '@alicloud/tea-typescript';
+import * as $dara from '@darabonba/typescript';
 
 
 export default class Client {

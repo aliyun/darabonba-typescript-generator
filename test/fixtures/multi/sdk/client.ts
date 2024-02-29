@@ -2,7 +2,7 @@
 import User, * as $User from './model/user';
 import Util from './lib/util';
 import API from './api';
-import * as $tea from '@alicloud/tea-typescript';
+import * as $dara from '@darabonba/typescript';
 
 
 export default class Client {

@@ -1,9 +1,9 @@
 // This file is auto-generated, don't edit it
 import Source, * as $Source from '@scope/name';
 import { Readable } from 'stream';
-import * as $tea from '@alicloud/tea-typescript';
+import * as $dara from '@darabonba/typescript';
 
-export class ComplexRequestHeader extends $tea.Model {
+export class ComplexRequestHeader extends $dara.Model {
   /**
    * @remarks
    * The ID of the security group to which you want to assign the instance. Instances in the same security group can communicate with each other. The maximum number of instances that a security group can contain depends on the type of the security group. For more information, see the "Security group limits" section in [Limits](https://help.aliyun.com/document_detail/25412.html#SecurityGroupQuota).
@@ -43,13 +43,16 @@ export class ComplexRequestHeader extends $tea.Model {
       content: 'string',
     };
   }
+  validate() {
+      $dara.Model.validateRequired("content", this.content);
+  };
 
   constructor(map?: { [key: string]: any }) {
     super(map);
   }
 }
 
-export class ComplexRequestConfigs extends $tea.Model {
+export class ComplexRequestConfigs extends $dara.Model {
   key: string;
   value: string[];
   extra: { [key: string]: string };
@@ -68,13 +71,18 @@ export class ComplexRequestConfigs extends $tea.Model {
       extra: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
     };
   }
+  validate() {
+      $dara.Model.validateRequired("key", this.key);
+      $dara.Model.validateRequired("value", this.value);
+      $dara.Model.validateRequired("extra", this.extra);
+  };
 
   constructor(map?: { [key: string]: any }) {
     super(map);
   }
 }
 
-export class ComplexRequestPart extends $tea.Model {
+export class ComplexRequestPart extends $dara.Model {
   /**
    * @remarks
    * PartNumber
@@ -91,13 +99,14 @@ export class ComplexRequestPart extends $tea.Model {
       partNumber: 'string',
     };
   }
+  validate() {  };
 
   constructor(map?: { [key: string]: any }) {
     super(map);
   }
 }
 
-export class ComplexRequest extends $tea.Model {
+export class ComplexRequest extends $dara.Model {
   accessKey: string;
   /**
    * @remarks
@@ -159,13 +168,21 @@ export class ComplexRequest extends $tea.Model {
       part: { 'type': 'array', 'itemType': ComplexRequestPart },
     };
   }
+  validate() {
+      $dara.Model.validateRequired("accessKey", this.accessKey);
+      $dara.Model.validateRequired("body", this.body);
+      $dara.Model.validateRequired("strs", this.strs);
+      $dara.Model.validateRequired("header", this.header);
+      $dara.Model.validateRequired("Num", this.Num);
+      $dara.Model.validateRequired("configs", this.configs);
+  };
 
   constructor(map?: { [key: string]: any }) {
     super(map);
   }
 }
 
-export class Err1 extends $tea.BaseError {
+export class Err1 extends $dara.BaseError {
   data: { [key: string]: string };
 
   constructor(map?: { [key: string]: any }) {
@@ -174,7 +191,7 @@ export class Err1 extends $tea.BaseError {
   }
 }
 
-export class Err2 extends $tea.BaseError {
+export class Err2 extends $dara.BaseError {
   accessErrMessage: string;
 
   constructor(map?: { [key: string]: any }) {
@@ -199,20 +216,20 @@ export default class Client extends Source {
 
     let _retriesAttempted = 0;
     let _lastRequest = null, _lastResponse = null;
-    let _context = new $tea.RetryPolicyContext({
+    let _context = new $dara.RetryPolicyContext({
       retriesAttempted: _retriesAttempted,
     });
-    while ($tea.shouldRetry(_runtime['retryOptions'], _context)) {
+    while ($dara.shouldRetry(_runtime['retryOptions'], _context)) {
       if (_retriesAttempted > 0) {
-        let _backoffTime = $tea.getBackoffDelay(_runtime['retryOptions'], _context);
+        let _backoffTime = $dara.getBackoffDelay(_runtime['retryOptions'], _context);
         if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
+          await $dara.sleep(_backoffTime);
         }
       }
 
       _retriesAttempted = _retriesAttempted + 1;
       try {
-        let request_ = new $tea.Request();
+        let request_ = new $dara.Request();
         let name = "complex";
         let mapVal = {
           test: "ok",
@@ -234,7 +251,7 @@ export default class Client extends Source {
           ...request.header,
         });
         request_.body = Source.body();
-        let response_ = await $tea.doAction(request_, _runtime);
+        let response_ = await $dara.doAction(request_, _runtime);
         _lastRequest = request_;
         _lastResponse = response_;
 
@@ -244,17 +261,17 @@ export default class Client extends Source {
           return new $Source.RuntimeObject({ });
         }
 
-        client.print($tea.toMap(request), "1");
-        await client.printAsync($tea.toMap(request), "1");
-        await this.hello($tea.toMap(request), [
+        client.print($dara.toMap(request), "1");
+        await client.printAsync($dara.toMap(request), "1");
+        await this.hello($dara.toMap(request), [
           "1",
           "2"
         ]);
         await this.hello(null, null);
         await this.Complex3(null);
-        return $tea.cast<$Source.RuntimeObject>({ }, new $Source.RuntimeObject({}));
+        return $dara.cast<$Source.RuntimeObject>({ }, new $Source.RuntimeObject({}));
       } catch (ex) {
-        _context = new $tea.RetryPolicyContext({
+        _context = new $dara.RetryPolicyContext({
           retriesAttempted : _retriesAttempted,
           lastRequest : _lastRequest,
           lastResponse : _lastResponse,
@@ -264,11 +281,11 @@ export default class Client extends Source {
       }
     }
 
-    throw $tea.newUnretryableError(_context);
+    throw $dara.newUnretryableError(_context);
   }
 
   async Complex2(request: ComplexRequest, str: string[], val: {[key: string ]: string}): Promise<{[key: string]: any}> {
-    let request_ = new $tea.Request();
+    let request_ = new $dara.Request();
     let name = "complex";
     let config = new $Source.Config({ });
     let client = new Source(config);
@@ -282,13 +299,13 @@ export default class Client extends Source {
       protocol: request_.protocol,
     });
     request_.body = Source.body();
-    let response_ = await $tea.doAction(request_);
+    let response_ = await $dara.doAction(request_);
 
     return { };
   }
 
   async Complex3(request: ComplexRequest): Promise<ComplexRequest> {
-    let request_ = new $tea.Request();
+    let request_ = new $dara.Request();
     let name = "complex";
     request_.protocol = await this.TemplateString();
     request_.port = 80;
@@ -299,20 +316,20 @@ export default class Client extends Source {
     });
     request_.body = Source.body();
     request_.headers["host"] = "hello";
-    let response_ = await $tea.doAction(request_);
+    let response_ = await $dara.doAction(request_);
 
     let resp = response_;
     let req = new $Source.Request({
       accesskey: request.accessKey,
       region: resp.statusMessage,
     });
-    Client.array0($tea.toMap(request));
+    Client.array0($dara.toMap(request));
     req.accesskey = "accesskey";
     req.accesskey = request.accessKey;
     Source.parse(ComplexRequest);
-    Source.array($tea.toMap(request), "1");
+    Source.array($dara.toMap(request), "1");
     await Source.asyncFunc();
-    return $tea.cast<ComplexRequest>({
+    return $dara.cast<ComplexRequest>({
       ...request_.query,
     }, new ComplexRequest({}));
   }
@@ -321,8 +338,8 @@ export default class Client extends Source {
     return Client.array1();
   }
 
-  static async print(reqeust: $tea.Request, reqs: ComplexRequest[], response: $tea.Response, val: {[key: string ]: string}): Promise<$Source.Request> {
-    return $tea.cast<$Source.Request>({ }, new $Source.Request({}));
+  static async print(reqeust: $dara.Request, reqs: ComplexRequest[], response: $dara.Response, val: {[key: string ]: string}): Promise<$Source.Request> {
+    return $dara.cast<$Source.Request>({ }, new $Source.Request({}));
   }
 
   static subConf(conf: $Source.RequestConfigs): $Source.RequestConfigsSubConf {
@@ -428,7 +445,7 @@ export default class Client extends Source {
     try {
       let str = await this.TemplateString();
     } catch (__err) {
-      if (__err instanceof $tea.BaseError) {
+      if (__err instanceof $dara.BaseError) {
         const err = __err;
         let error = err;
       }
@@ -438,7 +455,7 @@ export default class Client extends Source {
     try {
       let strNoFinal = await this.TemplateString();
     } catch (__err) {
-      if (__err instanceof $tea.BaseError) {
+      if (__err instanceof $dara.BaseError) {
         const e = __err;
         let errorNoFinal = e;
       }
@@ -467,7 +484,7 @@ export default class Client extends Source {
           accessErrMessage: "str2",
         });
       } else {
-        throw new $tea.BaseError({
+        throw new $dara.BaseError({
           name: "str",
           code: "str",
         });
@@ -482,7 +499,7 @@ export default class Client extends Source {
         const err = __err;
         console.log(err.name);
       }
-      if (__err instanceof $tea.BaseError) {
+      if (__err instanceof $dara.BaseError) {
         const err = __err;
         console.log(err.name);
       }

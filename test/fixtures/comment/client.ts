@@ -6,13 +6,13 @@
  */
 // import comment
 import Source from '@scope/module';
-import * as $tea from '@alicloud/tea-typescript';
+import * as $dara from '@darabonba/typescript';
 
 /**
  * @remarks
  * TestModel
  */
-export class Test1 extends $tea.Model {
+export class Test1 extends $dara.Model {
   /**
    * @remarks
    * test desc
@@ -38,6 +38,10 @@ export class Test1 extends $tea.Model {
       test2: 'string',
     };
   }
+  validate() {
+      $dara.Model.validateRequired("test", this.test);
+      $dara.Model.validateRequired("test2", this.test2);
+  };
 
   constructor(map?: { [key: string]: any }) {
     super(map);
@@ -48,7 +52,7 @@ export class Test1 extends $tea.Model {
  * @remarks
  * TestModel2
  */
-export class Test2 extends $tea.Model {
+export class Test2 extends $dara.Model {
   /**
    * @remarks
    * test desc
@@ -74,6 +78,10 @@ export class Test2 extends $tea.Model {
       test2: 'string',
     };
   }
+  validate() {
+      $dara.Model.validateRequired("test", this.test);
+      $dara.Model.validateRequired("test2", this.test2);
+  };
 
   constructor(map?: { [key: string]: any }) {
     super(map);
@@ -84,7 +92,7 @@ export class Test2 extends $tea.Model {
  * @remarks
  * TestModel3
  */
-export class Test3 extends $tea.Model {
+export class Test3 extends $dara.Model {
   // empty comment1
   // empy comment2
   static names(): { [key: string]: string } {
@@ -96,6 +104,7 @@ export class Test3 extends $tea.Model {
     return {
     };
   }
+  validate() {  };
 
   constructor(map?: { [key: string]: any }) {
     super(map);
@@ -145,20 +154,20 @@ export default class Client {
 
     let _retriesAttempted = 0;
     let _lastRequest = null, _lastResponse = null;
-    let _context = new $tea.RetryPolicyContext({
+    let _context = new $dara.RetryPolicyContext({
       retriesAttempted: _retriesAttempted,
     });
-    while ($tea.shouldRetry(_runtime['retryOptions'], _context)) {
+    while ($dara.shouldRetry(_runtime['retryOptions'], _context)) {
       if (_retriesAttempted > 0) {
-        let _backoffTime = $tea.getBackoffDelay(_runtime['retryOptions'], _context);
+        let _backoffTime = $dara.getBackoffDelay(_runtime['retryOptions'], _context);
         if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
+          await $dara.sleep(_backoffTime);
         }
       }
 
       _retriesAttempted = _retriesAttempted + 1;
       try {
-        let request_ = new $tea.Request();
+        let request_ = new $dara.Request();
         // new model instance comment
         let modelInstance = new Test1({
           // test declare front comment
@@ -170,7 +179,7 @@ export default class Client {
         let num = 123;
         // static function call comment
         Client.staticFunc();
-        let response_ = await $tea.doAction(request_, _runtime);
+        let response_ = await $dara.doAction(request_, _runtime);
         _lastRequest = request_;
         _lastResponse = response_;
 
@@ -179,7 +188,7 @@ export default class Client {
         // return comment
         return ;
       } catch (ex) {
-        _context = new $tea.RetryPolicyContext({
+        _context = new $dara.RetryPolicyContext({
           retriesAttempted : _retriesAttempted,
           lastRequest : _lastRequest,
           lastResponse : _lastResponse,
@@ -189,7 +198,7 @@ export default class Client {
       }
     }
 
-    throw $tea.newUnretryableError(_context);
+    throw $dara.newUnretryableError(_context);
   }
 
   // testAPI2 comment
@@ -203,20 +212,20 @@ export default class Client {
 
     let _retriesAttempted = 0;
     let _lastRequest = null, _lastResponse = null;
-    let _context = new $tea.RetryPolicyContext({
+    let _context = new $dara.RetryPolicyContext({
       retriesAttempted: _retriesAttempted,
     });
-    while ($tea.shouldRetry(_runtime['retryOptions'], _context)) {
+    while ($dara.shouldRetry(_runtime['retryOptions'], _context)) {
       if (_retriesAttempted > 0) {
-        let _backoffTime = $tea.getBackoffDelay(_runtime['retryOptions'], _context);
+        let _backoffTime = $dara.getBackoffDelay(_runtime['retryOptions'], _context);
         if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
+          await $dara.sleep(_backoffTime);
         }
       }
 
       _retriesAttempted = _retriesAttempted + 1;
       try {
-        let request_ = new $tea.Request();
+        let request_ = new $dara.Request();
         // new model instance comment
         let modelInstance = new Test3({ 
           //empty model 
@@ -232,13 +241,13 @@ export default class Client {
         // api function call comment
         await this.testAPI();
         // back comment
-        let response_ = await $tea.doAction(request_, _runtime);
+        let response_ = await $dara.doAction(request_, _runtime);
         _lastRequest = request_;
         _lastResponse = response_;
 
         // empty return comment
       } catch (ex) {
-        _context = new $tea.RetryPolicyContext({
+        _context = new $dara.RetryPolicyContext({
           retriesAttempted : _retriesAttempted,
           lastRequest : _lastRequest,
           lastResponse : _lastResponse,
@@ -248,7 +257,7 @@ export default class Client {
       }
     }
 
-    throw $tea.newUnretryableError(_context);
+    throw $dara.newUnretryableError(_context);
   }
 
   static staticFunc(): void {
