@@ -33,11 +33,11 @@ export default class Client {
     throw new Error('Un-implemented!');
   }
 
-  static async *iteratorFunc(){
+  static async *iteratorFunc(): AsyncGenerator<string, any, unknown> {
     throw new Error('Un-implemented!');
   }
 
-  static async *iteratorFunc2(){
+  static async *iteratorFunc2(): AsyncGenerator<string, any, unknown> {
     let it = await Client.iteratorFunc();
 
     for await (let test of it) {
