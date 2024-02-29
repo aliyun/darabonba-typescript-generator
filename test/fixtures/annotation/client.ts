@@ -2,13 +2,13 @@
  * @remarks
  * top annotation
  */
-import * as $tea from '@alicloud/tea-typescript';
+import * as $dara from '@darabonba/typescript';
 
 /**
  * @remarks
  * TestModel
  */
-export class Test extends $tea.Model {
+export class Test extends $dara.Model {
   /**
    * @remarks
    * Alichange app id 
@@ -24,6 +24,11 @@ export class Test extends $tea.Model {
     return {
       test: 'string',
     };
+  }
+
+  validate() {
+    $dara.Model.validateRequired("test", this.test);
+    super.validate();
   }
 
   constructor(map?: { [key: string]: any }) {
@@ -51,27 +56,27 @@ export default class Client {
 
     let _retriesAttempted = 0;
     let _lastRequest = null, _lastResponse = null;
-    let _context = new $tea.RetryPolicyContext({
+    let _context = new $dara.RetryPolicyContext({
       retriesAttempted: _retriesAttempted,
     });
-    while ($tea.shouldRetry(_runtime['retryOptions'], _context)) {
+    while ($dara.shouldRetry(_runtime['retryOptions'], _context)) {
       if (_retriesAttempted > 0) {
-        let _backoffTime = $tea.getBackoffDelay(_runtime['retryOptions'], _context);
+        let _backoffTime = $dara.getBackoffDelay(_runtime['retryOptions'], _context);
         if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
+          await $dara.sleep(_backoffTime);
         }
       }
 
       _retriesAttempted = _retriesAttempted + 1;
       try {
-        let request_ = new $tea.Request();
-        let response_ = await $tea.doAction(request_, _runtime);
+        let request_ = new $dara.Request();
+        let response_ = await $dara.doAction(request_, _runtime);
         _lastRequest = request_;
         _lastResponse = response_;
 
         return ;
       } catch (ex) {
-        _context = new $tea.RetryPolicyContext({
+        _context = new $dara.RetryPolicyContext({
           retriesAttempted : _retriesAttempted,
           lastRequest : _lastRequest,
           lastResponse : _lastResponse,
@@ -81,7 +86,7 @@ export default class Client {
       }
     }
 
-    throw $tea.newUnretryableError(_context);
+    throw $dara.newUnretryableError(_context);
   }
 
   /**
