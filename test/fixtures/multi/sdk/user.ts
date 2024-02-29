@@ -1,7 +1,7 @@
 // This file is auto-generated, don't edit it
 import DARAUtil from '@alicloud/tea-util';
 import Util from '../lib/util';
-import * as $tea from '@alicloud/tea-typescript';
+import * as $tea from '@darabonba/typescript';
 
 export class Info extends $tea.Model {
   name: string;
@@ -28,8 +28,8 @@ export class Info extends $tea.Model {
 
 export default class Client {
 
-  static async *test(){
-    let it = await Util.test1();
+  static async *test(): AsyncGenerator<string, any, unknown> {
+    let it = Util.test1();
 
     for(let test of it) {
       yield test;

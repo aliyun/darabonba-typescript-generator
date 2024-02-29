@@ -2,7 +2,7 @@
 /**
  top annotation
 */
-import * as $tea from '@alicloud/tea-typescript';
+import * as $tea from '@darabonba/typescript';
 
 /**
   TestModel
@@ -66,8 +66,8 @@ export default class Client {
       } catch (ex) {
         _context = new $tea.RetryPolicyContext({
           retriesAttempted : _retriesAttempted,
-          lastRequest : _lastRequest,
-          lastResponse : _lastResponse,
+          httpRequest : _lastRequest,
+          httpResponse : _lastResponse,
           exception : ex,
         });
         continue;

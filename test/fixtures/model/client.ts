@@ -1,7 +1,7 @@
 // This file is auto-generated, don't edit it
 import Source, * as $Source from '@scope/name';
 import { Readable } from 'stream';
-import * as $tea from '@alicloud/tea-typescript';
+import * as $tea from '@darabonba/typescript';
 
 export class MSubM extends $tea.Model {
   static names(): { [key: string]: string } {

@@ -2,7 +2,7 @@
 import User, * as $User from './model/user';
 import Util from './lib/util';
 import API from './api';
-import * as $tea from '@alicloud/tea-typescript';
+import * as $tea from '@darabonba/typescript';
 
 
 export default class Client {
@@ -15,8 +15,8 @@ export default class Client {
   }
 
 
-  async *test3(){
-    let it = await Util.test1();
+  async *test3(): AsyncGenerator<string, any, unknown> {
+    let it = Util.test1();
 
     for(let test of it) {
       yield test;

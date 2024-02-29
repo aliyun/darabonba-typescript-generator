@@ -1,7 +1,7 @@
 // This file is auto-generated, don't edit it
 import User from './model/user';
 import Util from './lib/util';
-import * as $tea from '@alicloud/tea-typescript';
+import * as $tea from '@darabonba/typescript';
 
 
 export default class Client {
@@ -46,8 +46,8 @@ export default class Client {
       } catch (ex) {
         _context = new $tea.RetryPolicyContext({
           retriesAttempted : _retriesAttempted,
-          lastRequest : _lastRequest,
-          lastResponse : _lastResponse,
+          httpRequest : _lastRequest,
+          httpResponse : _lastResponse,
           exception : ex,
         });
         continue;

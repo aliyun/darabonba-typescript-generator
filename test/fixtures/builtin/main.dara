@@ -51,7 +51,6 @@ static async function dateTest(args: [string]): void {
     var second = date.second();
     var dayOfMonth = date.dayOfMonth();
     var dayOfWeek = date.dayOfWeek();
-    var weekOfMonth = date.weekOfMonth();
     var weekOfYear = date.weekOfYear();
     var month = date.month();
     var year = date.year();
@@ -183,8 +182,6 @@ static async function numberTest(args: [string]): void {
     var randomNum = $Number.random();
     inum = $Number.floor(inum);
     inum = $Number.round(inum);
-    var min = $Number.min(inum, fnum);
-    var max = $Number.max(inum, fnum);
 }
 
 static async function streamTest(args: [string]): void {

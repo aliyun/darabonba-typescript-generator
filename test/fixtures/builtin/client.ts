@@ -1,6 +1,6 @@
 // This file is auto-generated, don't edit it
 import { Readable, Writable } from 'stream';
-import * as $tea from '@alicloud/tea-typescript';
+import * as $tea from '@darabonba/typescript';
 
 
 export default class Client {
@@ -33,7 +33,7 @@ export default class Client {
   static async bytesTest(args: string[]): Promise<void> {
     let fullStr = args.join(",");
     let data = Buffer.from(fullStr, "utf8");
-    let newFullStr = data.toString(2);
+    let newFullStr = data.toString("utf8");
     if (fullStr != newFullStr) {
       return ;
     }
@@ -58,7 +58,6 @@ export default class Client {
     let second = date.second();
     let dayOfMonth = date.dayOfMonth();
     let dayOfWeek = date.dayOfWeek();
-    let weekOfMonth = date.weekOfMonth();
     let weekOfYear = date.weekOfYear();
     let month = date.month();
     let year = date.year();
@@ -185,8 +184,6 @@ export default class Client {
     let randomNum = Math.random();
     inum = Math.floor(inum);
     inum = Math.round(inum);
-    let min = Math.min(inum, fnum);
-    let max = Math.max(inum, fnum);
   }
 
   static async streamTest(args: string[]): Promise<void> {
@@ -327,7 +324,7 @@ export default class Client {
     }
 
     $tea.sleep(a);
-    let defaultVal = String(args[0] || args[1]);
+    let defaultVal = args[0] || args[1];
     if (defaultVal === b) {
       return ;
     }

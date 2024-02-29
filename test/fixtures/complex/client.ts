@@ -1,7 +1,7 @@
 // This file is auto-generated, don't edit it
 import Source, * as $Source from '@scope/name';
 import { Readable } from 'stream';
-import * as $tea from '@alicloud/tea-typescript';
+import * as $tea from '@darabonba/typescript';
 
 export class ComplexRequestHeader extends $tea.Model {
   content: string;
@@ -194,8 +194,8 @@ export default class Client extends Source {
       } catch (ex) {
         _context = new $tea.RetryPolicyContext({
           retriesAttempted : _retriesAttempted,
-          lastRequest : _lastRequest,
-          lastResponse : _lastResponse,
+          httpRequest : _lastRequest,
+          httpResponse : _lastResponse,
           exception : ex,
         });
         continue;
