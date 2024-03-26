@@ -98,7 +98,7 @@ describe('new Generator', function() {
   it('add annotation should ok', function () {
     const outputDir = path.join(__dirname, 'output/annotation');
     const mainFilePath = path.join(__dirname, 'fixtures/annotation/main.dara');
-    check(mainFilePath, outputDir, path.join(__dirname, 'fixtures/annotation/client.ts'));
+    check(mainFilePath, outputDir, path.join(__dirname, 'fixtures/annotation/client.ts'), {editable: true});
   });
 
   it('add comments should ok', function () {

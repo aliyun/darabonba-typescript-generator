@@ -1,13 +1,18 @@
-// This file is auto-generated, don't edit it
 /**
- top annotation
-*/
+ * @remarks
+ * top annotation
+ */
 import * as $tea from '@alicloud/tea-typescript';
 
 /**
-  TestModel
-*/
+ * @remarks
+ * TestModel
+ */
 export class Test extends $tea.Model {
+  /**
+   * @remarks
+   * Alichange app id 
+   */
   test: string;
   static names(): { [key: string]: string } {
     return {
@@ -31,14 +36,16 @@ export default class Client {
   _a: string;
 
   /**
-    Init Func
-  */
+   * @remarks
+   * Init Func
+   */
   constructor() {
   }
 
   /**
-    testAPI
-  */
+   * @remarks
+   * testAPI
+   */
   async testAPI(): Promise<void> {
     let _runtime: { [key: string]: any } = { }
 
@@ -72,9 +79,48 @@ export default class Client {
   }
 
   /**
-    testFunc
-  */
+   * @remarks
+   * testFunc
+   */
   static async testFunc(): Promise<void> {
+  }
+
+  /**
+   * annotation test summary
+   * 
+   * @remarks
+   * annotation test description
+   * * description1 test for typescript
+   * * description2 test for typescript
+   * * test link: [Limits](https://help.aliyun.com/document_detail/25412.html#SecurityGroupQuota).
+   * 
+   * @param test - string param1
+   * @param _test - string param2
+   * @returns void
+   * 
+   * @throws InternalError Server error. 500 服务器端出现未知异常。
+   * @throws StackNotFound The Stack (%(stack_name)s) could not be found.  404 资源栈不存在。
+   */
+  static async testFuncWithAnnotation(test: string, _test: string): Promise<void> {
+    // empty comment1
+    // empty comment2
+  }
+
+  /**
+   * annotation test summary
+   * 
+   * @deprecated annotation test deprecation
+   * 
+   * @param test - string param1
+   * @param _test - string param2
+   * @returns void
+   * 
+   * @throws InternalError Server error. 500 服务器端出现未知异常。
+   * @throws StackNotFound The Stack (%(stack_name)s) could not be found.  404 资源栈不存在。
+   */
+  static async testFuncWithAnnotation1(test: string, _test: string): Promise<void> {
+    // empty comment1
+    // empty comment2
   }
 
 }
