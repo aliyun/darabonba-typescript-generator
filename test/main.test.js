@@ -98,7 +98,7 @@ describe('new Generator', function() {
   it('add annotation should ok', function () {
     const outputDir = path.join(__dirname, 'output/annotation');
     const mainFilePath = path.join(__dirname, 'fixtures/annotation/main.dara');
-    check(mainFilePath, outputDir, path.join(__dirname, 'fixtures/annotation/client.ts'));
+    check(mainFilePath, outputDir, path.join(__dirname, 'fixtures/annotation/client.ts'), {editable: true});
   });
 
   it('add comments should ok', function () {
@@ -108,14 +108,15 @@ describe('new Generator', function() {
     const pkg = JSON.parse(pkgContent);
     check(mainFilePath, outputDir, path.join(__dirname, 'fixtures/comment/client.ts'), {
       pkgDir: path.join(__dirname, 'fixtures/comment'),
-      ...pkg
+      ...pkg,
+      editable: 'true'
     });
   });
 
   it('add builtin should ok', function () {
     const outputDir = path.join(__dirname, 'output/builtin');
     const mainFilePath = path.join(__dirname, 'fixtures/builtin/main.dara');
-    check(mainFilePath, outputDir, path.join(__dirname, 'fixtures/builtin/client.ts'));
+    check(mainFilePath, outputDir, path.join(__dirname, 'fixtures/builtin/client.ts'), {editable: 1});
   });
 
   it('multi dara should ok', function () {
@@ -126,7 +127,8 @@ describe('new Generator', function() {
     const generator = new Generator({
       outputDir,
       pkgDir: path.join(__dirname, 'fixtures/multi/tea'),
-      ...pkg
+      ...pkg,
+      editable: 'test-other'
     });
   
     const dsl = fs.readFileSync(mainFilePath, 'utf8');
@@ -157,7 +159,8 @@ describe('new Generator', function() {
     const pkg = JSON.parse(pkgContent);
     check(mainFilePath, outputDir, path.join(__dirname, 'fixtures/tea/client.ts'), {
       pkgDir: path.join(__dirname, 'fixtures/tea'),
-      ...pkg
+      ...pkg,
+      editable: false
     });
   });
 });

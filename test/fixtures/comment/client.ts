@@ -1,17 +1,27 @@
 // This file is auto-generated, don't edit it
 // top comment
 /**
- top annotation
-*/
+ * @remarks
+ * top annotation
+ */
 // import comment
 import Source from '@scope/module';
 import * as $tea from '@alicloud/tea-typescript';
 
 /**
-  TestModel
-*/
+ * @remarks
+ * TestModel
+ */
 export class Test1 extends $tea.Model {
+  /**
+   * @remarks
+   * test desc
+   */
   test: string;
+  /**
+   * @remarks
+   * test2 desc
+   */
   //model的test back comment
   test2: string;
   //model的test2 back comment
@@ -35,11 +45,20 @@ export class Test1 extends $tea.Model {
 }
 
 /**
-  TestModel2
-*/
+ * @remarks
+ * TestModel2
+ */
 export class Test2 extends $tea.Model {
+  /**
+   * @remarks
+   * test desc
+   */
   // model的test front comment
   test: string;
+  /**
+   * @remarks
+   * test2 desc
+   */
   // model的test front comment
   test2: string;
   static names(): { [key: string]: string } {
@@ -62,8 +81,9 @@ export class Test2 extends $tea.Model {
 }
 
 /**
-  TestModel3
-*/
+ * @remarks
+ * TestModel3
+ */
 export class Test3 extends $tea.Model {
   // empty comment1
   // empy comment2
@@ -88,8 +108,9 @@ export default class Client {
   _a: string[];
 
   /**
-    Init Func
-  */
+   * @remarks
+   * Init Func
+   */
   // comment between init and annotation
   constructor() {
     // string declate comment
@@ -111,8 +132,9 @@ export default class Client {
   }
 
   /**
-    testAPI
-  */
+   * @remarks
+   * testAPI
+   */
   //testAPI comment one
   //testAPI comment two
   async testAPI(): Promise<void> {
@@ -236,8 +258,9 @@ export default class Client {
   }
 
   /**
-    testFunc
-  */
+   * @remarks
+   * testFunc
+   */
   static async testFunc(): Promise<void> {
     // empty comment1
     // empty comment2
