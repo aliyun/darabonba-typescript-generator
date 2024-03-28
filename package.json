@@ -19,6 +19,7 @@
     "url": "git@github.com:aliyun/darabonba-typescript-generator.git"
   },
   "dependencies": {
+    "@darabonba/annotation-parser": "^1.0.0",
     "@darabonba/parser": "^2.0.5"
   },
   "devDependencies": {
