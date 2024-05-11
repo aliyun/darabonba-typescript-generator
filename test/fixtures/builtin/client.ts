@@ -1,6 +1,6 @@
 // This file is auto-generated, don't edit it
 import { Readable, Writable } from 'stream';
-import * as $tea from '@alicloud/tea-typescript';
+import * as $dara from '@darabonba/typescript';
 
 
 export default class Client {
@@ -21,8 +21,8 @@ export default class Client {
         "test"
       ];
       let cArr : string[] = newArr.concat(args);
-      let acsArr = $tea.sort(newArr, "acs");
-      let descArr = $tea.sort(newArr, "desc");
+      let acsArr = $dara.sort(newArr, "acs");
+      let descArr = $dara.sort(newArr, "desc");
       let llArr : string[] = acsArr.concat(descArr);
       llArr.splice(10, 0, "test");
       llArr.splice(llArr.indexOf("test"), 1);
@@ -46,7 +46,7 @@ export default class Client {
   }
 
   static async dateTest(args: string[]): Promise<void> {
-    let date = new $tea.Date("2023-09-12 17:47:31.916000 +0800 UTC");
+    let date = new $dara.Date("2023-09-12 17:47:31.916000 +0800 UTC");
     let dateStr = date.format("YYYY-MM-DD HH:mm:ss");
     let timestamp = date.unix();
     let yesterday = date.sub("day", 1);
@@ -70,8 +70,8 @@ export default class Client {
   }
 
   static async fileTest(args: string[]): Promise<void> {
-    if (await $tea.File.exists("/tmp/test")) {
-      let file = new $tea.File("/tmp/test");
+    if (await $dara.File.exists("/tmp/test")) {
+      let file = new $dara.File("/tmp/test");
       let path = file.path();
       let length = await file.length() + 10;
       let createTime = await file.createTime();
@@ -79,8 +79,8 @@ export default class Client {
       let timeLong = modifyTime.diff("minute", createTime);
       let data = await file.read(300);
       await file.write(Buffer.from("test", "utf8"));
-      let rs : Readable = $tea.File.createReadStream("/tmp/test");
-      let ws : Writable = $tea.File.createWriteStream("/tmp/test");
+      let rs : Readable = $dara.File.createReadStream("/tmp/test");
+      let ws : Writable = $dara.File.createWriteStream("/tmp/test");
     }
 
   }
@@ -95,9 +95,9 @@ export default class Client {
         key6: "321",
       },
     };
-    let form = $tea.Form.toFormString(m);
-    form = form + "&key7=23233&key8=" + $tea.Form.getBoundary();
-    let r : Readable = $tea.Form.toFileForm(m, $tea.Form.getBoundary());
+    let form = $dara.Form.toFormString(m);
+    form = form + "&key7=23233&key8=" + $dara.Form.getBoundary();
+    let r : Readable = $dara.Form.toFileForm(m, $dara.Form.getBoundary());
   }
 
   static async jsonTest(args: string[]): Promise<void> {
@@ -151,7 +151,7 @@ export default class Client {
       key1: "value4",
       key4: "value5",
     };
-    let mapTest3 = $tea.merge(mapTest , mapTest2);
+    let mapTest3 = $dara.merge(mapTest , mapTest2);
     if (mapTest3["key1"] == "value4") {
       return ;
     }
@@ -190,15 +190,15 @@ export default class Client {
   }
 
   static async streamTest(args: string[]): Promise<void> {
-    if (await $tea.File.exists("/tmp/test")) {
-      let rs : Readable = $tea.File.createReadStream("/tmp/test");
-      let ws : Writable = $tea.File.createWriteStream("/tmp/test");
+    if (await $dara.File.exists("/tmp/test")) {
+      let rs : Readable = $dara.File.createReadStream("/tmp/test");
+      let ws : Writable = $dara.File.createWriteStream("/tmp/test");
       let data = rs.read(30);
       ws.write(data);
       rs.pipe(ws);
-      data = await $tea.Stream.readAsBytes(rs);
-      let obj = await $tea.Stream.readAsJSON(rs);
-      let jsonStr = await $tea.Stream.readAsString(rs);
+      data = await $dara.Stream.readAsBytes(rs);
+      let obj = await $dara.Stream.readAsJSON(rs);
+      let jsonStr = await $dara.Stream.readAsString(rs);
     }
 
   }
@@ -242,7 +242,7 @@ export default class Client {
   }
 
   static async urlTest(args: string[]): Promise<void> {
-    let url = new $tea.URL(args[0]);
+    let url = new $dara.URL(args[0]);
     let path = url.path();
     let pathname = url.pathname();
     let protocol = url.protocol();
@@ -253,11 +253,11 @@ export default class Client {
     let search = url.search();
     let href = url.href();
     let auth = url.auth();
-    let url2 = $tea.URL.parse(args[1]);
+    let url2 = $dara.URL.parse(args[1]);
     path = url2.path();
-    let newUrl = $tea.URL.urlEncode(args[2]);
-    let newSearch = $tea.URL.percentEncode(search);
-    let newPath = $tea.URL.pathEncode(pathname);
+    let newUrl = $dara.URL.urlEncode(args[2]);
+    let newSearch = $dara.URL.percentEncode(search);
+    let newPath = $dara.URL.pathEncode(pathname);
     let all = "test" + path + protocol + hostname + hash + search + href + auth + newUrl + newSearch + newPath;
   }
 
@@ -271,9 +271,9 @@ export default class Client {
         key6: "321",
       },
     };
-    let xml = $tea.XML.toXML(m);
+    let xml = $dara.XML.toXML(m);
     xml = xml + "<key7>132</key7>";
-    let respMap : {[key: string ]: any} = $tea.XML.parseXml(xml, null);
+    let respMap : {[key: string ]: any} = $dara.XML.parseXml(xml, null);
   }
 
   static returnAny(): any {
@@ -320,13 +320,13 @@ export default class Client {
       let ws = Writable.from(obj);
       let rs = Readable.from(maps);
       data = rs.read(30);
-      if (!$tea.isNull(data)) {
+      if (!$dara.isNull(data)) {
         ws.write(data);
       }
 
     }
 
-    $tea.sleep(a);
+    $dara.sleep(a);
     let defaultVal = String(args[0] || args[1]);
     if (defaultVal === b) {
       return ;
