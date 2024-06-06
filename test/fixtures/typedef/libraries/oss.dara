@@ -1,0 +1,7 @@
+typedef HttpRequest
+typedef TeaModel
+type @vid=HttpRequest
+
+init(test: HttpRequest){
+  @vid = test;
+}

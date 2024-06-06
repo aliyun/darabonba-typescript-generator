@@ -1,0 +1,25 @@
+{
+  "name": "OSS",
+  "main": "./oss.dara",
+  "releases": {
+    "ts": "@scope/name:1.0.0"
+  },
+  "libraries": {},
+  "ts": {
+    "typedef": {
+      "HttpRequest": {
+        "import": "http",
+        "type": "ClientRequest",
+        "package": "@types/node:^14"
+      },
+      "HttpResponse": {
+        "import": "http",
+        "type": "IncomingMessage",
+        "package": "@types/node:^14"
+      },
+      "TeaModel": {
+        "type": "$dara.Model"
+      }
+    }
+  }
+}
