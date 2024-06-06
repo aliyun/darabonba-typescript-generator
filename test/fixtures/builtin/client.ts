@@ -58,7 +58,6 @@ export default class Client {
     let second = date.second();
     let dayOfMonth = date.dayOfMonth();
     let dayOfWeek = date.dayOfWeek();
-    let weekOfMonth = date.weekOfMonth();
     let weekOfYear = date.weekOfYear();
     let month = date.month();
     let year = date.year();

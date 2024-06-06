@@ -152,6 +152,17 @@ describe('new Generator', function() {
     assert.deepStrictEqual(fs.readFileSync(apiPath, 'utf8'), expectedApi);
   });
 
+  it('typedef should ok', function () {
+    const outputDir = path.join(__dirname, 'output/typedef');
+    const mainFilePath = path.join(__dirname, 'fixtures/typedef/main.dara');
+    const pkgContent = fs.readFileSync(path.join(__dirname, 'fixtures/typedef/Darafile'), 'utf8');
+    const pkg = JSON.parse(pkgContent);
+    check(mainFilePath, outputDir, path.join(__dirname, 'fixtures/typedef/client.ts'), {
+      pkgDir: path.join(__dirname, 'fixtures/typedef'),
+      ...pkg
+    });
+  });
+
   it('tea should ok', function () {
     const outputDir = path.join(__dirname, 'output/tea');
     const mainFilePath = path.join(__dirname, 'fixtures/tea/main.tea');

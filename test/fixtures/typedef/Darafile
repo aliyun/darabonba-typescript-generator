@@ -1,0 +1,31 @@
+{
+  "scope": "darabonba",
+  "name": "main",
+  "version": "0.0.1",
+  "main": "./main.dara",
+  "libraries": {
+    "OSS": "alibabacloud:OSS:*"
+  },
+  "ts": {
+    "typedef": {
+      "HttpResponse": {
+        "import": "http",
+        "type": "IncomingMessage",
+        "package": "@types/node:^14"
+      },
+      "HttpHeader": {
+        "import": "http",
+        "type": "OutgoingHttpHeaders",
+        "package": "@types/node:^14"
+      },
+      "HttpURL": {
+        "import": null,
+        "type": "string"
+      },
+      "Time": {
+        "import": "time",
+        "type": "Time"
+      }
+    }
+  }
+}

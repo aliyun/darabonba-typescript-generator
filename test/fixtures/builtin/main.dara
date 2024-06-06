@@ -51,7 +51,6 @@ static async function dateTest(args: [string]): void {
     var second = date.second();
     var dayOfMonth = date.dayOfMonth();
     var dayOfWeek = date.dayOfWeek();
-    var weekOfMonth = date.weekOfMonth();
     var weekOfYear = date.weekOfYear();
     var month = date.month();
     var year = date.year();
