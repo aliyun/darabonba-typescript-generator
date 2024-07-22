@@ -123,4 +123,26 @@ export default class Client {
     // empty comment2
   }
 
+  /**
+   * annotation test summary
+   * 
+   * @deprecated annotation test deprecation
+   * deprecated description1
+   * 
+   * @param test - string param1
+   * param description1
+   * @param _test - string param2
+   * param description2
+   * @returns void
+   * return description1
+   * 
+   * @throws InternalError Server error. 500 服务器端出现未知异常。
+   * throws description1
+   * @throws StackNotFound The Stack (%(stack_name)s) could not be found.  404 资源栈不存在。
+   */
+  static async testLineBreakAnnotation(test: string, _test: string): Promise<void> {
+    // empty comment1
+    // empty comment2
+  }
+
 }
