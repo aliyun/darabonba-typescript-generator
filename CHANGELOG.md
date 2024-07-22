@@ -1,5 +1,9 @@
 # ChangeLog
 
+## 1.1.6 - 2024-07-22
+
+- support reference doc .
+
 ## 1.1.4 - 2022-01-12
 
 - fix complex type in map generate error .
