@@ -189,13 +189,13 @@ export class ComplexRequest extends $dara.Model {
       $dara.Model.validateArray(this.strs);
     }
     $dara.Model.validateRequired("strs", this.strs);
-    if(this.header) {
-      this.header.validate();
+    if(this.header && typeof (this.header as any).validate === 'function') {
+      (this.header as any).validate();
     }
     $dara.Model.validateRequired("header", this.header);
     $dara.Model.validateRequired("Num", this.Num);
-    if(this.configs) {
-      this.configs.validate();
+    if(this.configs && typeof (this.configs as any).validate === 'function') {
+      (this.configs as any).validate();
     }
     $dara.Model.validateRequired("configs", this.configs);
     if(Array.isArray(this.part)) {
