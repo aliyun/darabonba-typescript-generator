@@ -197,8 +197,8 @@ export default class Client {
       } catch (ex) {
         _context = new $dara.RetryPolicyContext({
           retriesAttempted : _retriesAttempted,
-          lastRequest : _lastRequest,
-          lastResponse : _lastResponse,
+          httpRequest : _lastRequest,
+          httpResponse : _lastResponse,
           exception : ex,
         });
         continue;
@@ -256,8 +256,8 @@ export default class Client {
       } catch (ex) {
         _context = new $dara.RetryPolicyContext({
           retriesAttempted : _retriesAttempted,
-          lastRequest : _lastRequest,
-          lastResponse : _lastResponse,
+          httpRequest : _lastRequest,
+          httpResponse : _lastResponse,
           exception : ex,
         });
         continue;

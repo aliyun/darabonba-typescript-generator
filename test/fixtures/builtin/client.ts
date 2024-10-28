@@ -184,8 +184,6 @@ export default class Client {
     let randomNum = Math.random();
     inum = Math.floor(inum);
     inum = Math.round(inum);
-    let min = Math.min(inum, fnum);
-    let max = Math.max(inum, fnum);
   }
 
   static async streamTest(args: string[]): Promise<void> {
@@ -326,7 +324,7 @@ export default class Client {
     }
 
     $dara.sleep(a);
-    let defaultVal = String(args[0] || args[1]);
+    let defaultVal = args[0] || args[1];
     if (defaultVal === b) {
       return ;
     }
