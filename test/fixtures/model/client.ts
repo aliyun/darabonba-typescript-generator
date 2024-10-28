@@ -82,8 +82,8 @@ export class M extends $dara.Model {
   }
 
   validate() {
-    if(this.subM) {
-      this.subM.validate();
+    if(this.subM && typeof (this.subM as any).validate === 'function') {
+      (this.subM as any).validate();
     }
     $dara.Model.validateRequired("subM", this.subM);
     super.validate();
@@ -192,8 +192,8 @@ export class MyModel extends $dara.Model {
     }
     $dara.Model.validateRequired("mapfield", this.mapfield);
     $dara.Model.validateRequired("name", this.name);
-    if(this.submodel) {
-      this.submodel.validate();
+    if(this.submodel && typeof (this.submodel as any).validate === 'function') {
+      (this.submodel as any).validate();
     }
     $dara.Model.validateRequired("submodel", this.submodel);
     if(Array.isArray(this.subarraymodel)) {
@@ -239,12 +239,12 @@ export class MyModel extends $dara.Model {
     $dara.Model.validateRequired("longfield", this.longfield);
     $dara.Model.validateRequired("readable", this.readable);
     $dara.Model.validateRequired("request", this.request);
-    if(this.existModel) {
-      this.existModel.validate();
+    if(this.existModel && typeof (this.existModel as any).validate === 'function') {
+      (this.existModel as any).validate();
     }
     $dara.Model.validateRequired("existModel", this.existModel);
-    if(this.moduleField) {
-      this.moduleField.validate();
+    if(this.moduleField && typeof (this.moduleField as any).validate === 'function') {
+      (this.moduleField as any).validate();
     }
     $dara.Model.validateRequired("moduleField", this.moduleField);
     if(Array.isArray(this.complexList)) {

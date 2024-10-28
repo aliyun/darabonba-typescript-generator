@@ -1,5 +1,6 @@
 // This file is auto-generated, don't edit it
 import Source, * as $Source from '@scope/module';
+import Util, * as $Util from '@scope/module/src/util';
 import LocalSource, * as $LocalSource from '@scope/localModule';
 import * as $dara from '@darabonba/typescript';
 
@@ -15,6 +16,7 @@ export default class Client {
 
 
   static Sample(client: Source): void {
+    let a : $Util.M = Util.test1();
     let runtime = new $Source.RuntimeObject({ });
     let request = new $LocalSource.Request({
       accesskey: "accesskey",
