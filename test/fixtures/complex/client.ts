@@ -209,7 +209,7 @@ export class ComplexRequest extends $dara.Model {
   }
 }
 
-export class Err1 extends $dara.BaseError {
+export class Err1Error extends $dara.BaseError {
   data: { [key: string]: string };
 
   constructor(map?: { [key: string]: any }) {
@@ -218,7 +218,7 @@ export class Err1 extends $dara.BaseError {
   }
 }
 
-export class Err2 extends $dara.BaseError {
+export class Err2Error extends $dara.BaseError {
   accessErrMessage: string;
 
   constructor(map?: { [key: string]: any }) {
@@ -497,7 +497,7 @@ export default class Client extends Source {
   async multiTryCatch(a: number): Promise<void> {
     try {
       if (a > 0) {
-        throw new Err1({
+        throw new Err1Error({
           name: "str",
           code: "str",
           data: {
@@ -505,10 +505,16 @@ export default class Client extends Source {
           },
         });
       } else if (a == 0) {
-        throw new Err2({
+        throw new Err2Error({
           name: "str",
           code: "str",
           accessErrMessage: "str2",
+        });
+      } else if (a < 0) {
+        throw new $Source.Err3Error({
+          name: "str",
+          code: "str",
+          otherMessage: "str2",
         });
       } else {
         throw new $dara.BaseError({
@@ -518,11 +524,15 @@ export default class Client extends Source {
       }
 
     } catch (__err) {
-      if (__err instanceof Err1) {
+      if (__err instanceof Err1Error) {
         const err = __err;
         console.log(err.name);
       }
-      if (__err instanceof Err2) {
+      if (__err instanceof Err2Error) {
+        const err = __err;
+        console.log(err.name);
+      }
+      if (__err instanceof $Source.Err3Error) {
         const err = __err;
         console.log(err.name);
       }

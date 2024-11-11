@@ -260,6 +260,12 @@ async function multiTryCatch(a: number): void {
         code = "str",
         accessErrMessage = "str2",
       };
+    } else if(a < 0) {
+      throw new Source.Err3 {
+        name = "str",
+        code = "str",
+        otherMessage = "str2",
+      };
     } else {
       throw new $Error{
         name = "str",
@@ -269,6 +275,8 @@ async function multiTryCatch(a: number): void {
   } catch(err: Err1) {
     $Logger.log(err.name);
   } catch(err: Err2) {
+    $Logger.log(err.name);
+  } catch(err: Source.Err3) {
     $Logger.log(err.name);
   } catch(err) {
     $Logger.log(err.name);
