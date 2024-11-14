@@ -217,6 +217,13 @@ async function TemplateString(): string {
   return `/${@protocol}`;
 }
 
+function intOp(a: integer): void {
+  a++;
+  ++a;
+  a--;
+  --a;
+}
+
 async function emptyModel(): void {
   new ComplexRequest;
   new ComplexRequest.header;
