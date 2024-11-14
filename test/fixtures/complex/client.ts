@@ -463,6 +463,13 @@ export default class Client extends Source {
     return `/${this._protocol}`;
   }
 
+  intOp(a: number): void {
+    a++;
+    ++a;
+    a--;
+    --a;
+  }
+
   async emptyModel(): Promise<void> {
     new ComplexRequest({ });
     new ComplexRequestHeader({ });
