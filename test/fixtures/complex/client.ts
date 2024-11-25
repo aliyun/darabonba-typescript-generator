@@ -210,6 +210,7 @@ export class ComplexRequest extends $dara.Model {
 }
 
 export class Err1Error extends $dara.BaseError {
+  message: string;
   data: { [key: string]: string };
 
   constructor(map?: { [key: string]: any }) {

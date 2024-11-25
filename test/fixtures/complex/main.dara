@@ -13,6 +13,7 @@ init(config: Source.Config){
 
 
 exception Err1 = {
+  message: string,
   data: map[string]string
 }
 
