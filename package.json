@@ -1,6 +1,6 @@
 {
   "name": "@darabonba/typescript-generator",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "The darabonba generator for TypeScript",
   "main": "lib/generator",
   "directories": {
