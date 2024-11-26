@@ -1,6 +1,6 @@
 // This file is auto-generated, don't edit it
 import Source, * as $Source from '@scope/module';
-import Util, * as $Util from '@scope/module/src/util';
+import { Util, $Util } from '@scope/module';
 import LocalSource, * as $LocalSource from '@scope/localModule';
 import * as $dara from '@darabonba/typescript';
 

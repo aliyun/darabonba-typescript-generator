@@ -4,6 +4,11 @@ import Util from './lib/util';
 import API from './api';
 import * as $dara from '@darabonba/typescript';
 
+export * as $Api from './api';
+export { default as Api } from './api';
+export * as $User from './model/user';
+export { default as User } from './model/user';
+
 
 export default class Client {
   _user: $User.Info;
