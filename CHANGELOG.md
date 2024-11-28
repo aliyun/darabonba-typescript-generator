@@ -1,5 +1,17 @@
 # ChangeLog
 
+## 2.0.2 - 2024-11-23
+
+- fix the inner export way.
+
+## 2.0.1 - 2024-11-23
+
+- fix the message attr in error will be overwriten.
+
+## 2.0.0 - 2024-11-12
+
+- upgrade the generator by darbaonba v2.
+
 ## 1.1.4 - 2022-01-12
 
 - fix complex type in map generate error .
