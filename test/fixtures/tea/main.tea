@@ -1,5 +1,5 @@
 import Source;
-import Source.Util;
+import Source.Util as SourceUtil;
 import LocalSource;
 
 type @id = [ string ];
@@ -12,7 +12,7 @@ init(id: [ string ], str: string) {
 }
 
 static function Sample(client: Source): void {
-    var a:Util.M = Util.test1();
+    var a:SourceUtil.M = SourceUtil.test1();
     var runtime = new Source.RuntimeObject{};
     var request = new LocalSource.Request{
         accesskey = "accesskey",

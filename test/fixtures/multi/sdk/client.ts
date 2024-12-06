@@ -2,6 +2,7 @@
 import User, * as $User from './model/user';
 import Util from './lib/util';
 import API from './api';
+import Overwrite from './overwrite';
 import * as $dara from '@darabonba/typescript';
 
 export * as $Api from './api';
@@ -14,6 +15,7 @@ export default class Client {
   _user: $User.Info;
 
   constructor() {
+    Overwrite.test();
     this._user = new $User.Info({
       name: "test",
     });
