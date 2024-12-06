@@ -123,6 +123,13 @@ describe('new Generator', function() {
     const outputDir = path.join(__dirname, 'output/multi');
     const mainFilePath = path.join(__dirname, 'fixtures/multi/tea/sdk.dara');
     const pkgContent = fs.readFileSync(path.join(__dirname, 'fixtures/multi/tea/Darafile'), 'utf8');
+    const expectedOverwritePath = path.join(__dirname, 'fixtures/multi/sdk/overwrite.ts');
+    const expectedOverwrite = fs.readFileSync(expectedOverwritePath, 'utf8');
+    const srcPath = path.join(outputDir, 'src');
+    if(!fs.existsSync(srcPath)) {
+      fs.mkdirSync(srcPath, {recursive: true});
+    }
+    fs.writeFileSync(path.join(srcPath, 'overwrite.ts'), expectedOverwrite);
     const pkg = JSON.parse(pkgContent);
     const generator = new Generator({
       outputDir,
@@ -138,10 +145,12 @@ describe('new Generator', function() {
     const apiPath = path.join(outputDir, 'src/api.ts');
     const modelPath = path.join(outputDir, 'src/model/user.ts');
     const utilPath = path.join(outputDir, 'src/lib/util.ts');
+    const overwritePath = path.join(outputDir, 'src/overwrite.ts');
     const expectedMainPath = path.join(__dirname, 'fixtures/multi/sdk/client.ts');
     const expectedModelPath = path.join(__dirname, 'fixtures/multi/sdk/user.ts');
     const expectedUtilPath = path.join(__dirname, 'fixtures/multi/sdk/util.ts');
     const expectedApiPath = path.join(__dirname, 'fixtures/multi/sdk/api.ts');
+    
     const expectedMain = fs.readFileSync(expectedMainPath, 'utf8');
     assert.deepStrictEqual(fs.readFileSync(mainPath, 'utf8'), expectedMain);
     const expectedModel = fs.readFileSync(expectedModelPath, 'utf8');
@@ -150,6 +159,8 @@ describe('new Generator', function() {
     assert.deepStrictEqual(fs.readFileSync(utilPath, 'utf8'), expectedUtil);
     const expectedApi = fs.readFileSync(expectedApiPath, 'utf8');
     assert.deepStrictEqual(fs.readFileSync(apiPath, 'utf8'), expectedApi);
+
+    assert.deepStrictEqual(fs.readFileSync(overwritePath, 'utf8'), expectedOverwrite);
   });
 
   it('typedef should ok', function () {
