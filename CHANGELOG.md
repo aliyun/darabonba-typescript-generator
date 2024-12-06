@@ -1,5 +1,9 @@
 # ChangeLog
 
+## 2.0.3 - 2024-12-06
+
+- fix the aliasId from inner module.
+
 ## 2.0.2 - 2024-11-23
 
 - fix the inner export way.
