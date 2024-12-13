@@ -215,6 +215,8 @@ export class Err1Error extends $dara.BaseError {
 
   constructor(map?: { [key: string]: any }) {
     super(map);
+    this.name = "Err1Error";
+    Object.setPrototypeOf(this, Err1Error.prototype);
     this.data = map.data;
   }
 }
@@ -224,6 +226,8 @@ export class Err2Error extends $dara.BaseError {
 
   constructor(map?: { [key: string]: any }) {
     super(map);
+    this.name = "Err2Error";
+    Object.setPrototypeOf(this, Err2Error.prototype);
     this.accessErrMessage = map.accessErrMessage;
   }
 }
