@@ -13,6 +13,8 @@ export default class Client {
     return {
       key: "value",
       'key-1': "value-1",
+      'key-2': "value-2",
+      '\"\"': "value-2",
       ...m,
     };
   }
@@ -21,6 +23,7 @@ export default class Client {
     return [
       {
         key: "value",
+        'key-1': "value-1",
       }
     ];
   }
