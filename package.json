@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@darabonba/annotation-parser": "^1.0.0",
-    "@darabonba/parser": "^2.0.5"
+    "@darabonba/parser": "^2.1.3"
   },
   "devDependencies": {
     "eslint": "^6.5.1",

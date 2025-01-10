@@ -109,8 +109,8 @@ static async function jsonTest(args: [string]): void {
 }
 
 static async function logerTest(args: [string]): void { 
+    $Logger.info(`test:${args[0]}`);
     $Logger.log("test");
-    $Logger.info("test");
     $Logger.warning("test");
     $Logger.debug("test");
     $Logger.error("test");

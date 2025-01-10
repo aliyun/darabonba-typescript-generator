@@ -64,8 +64,8 @@ export default class Client {
   }
 
   static async envTest(args: string[]): Promise<void> {
-    let es = process.env["TEST"];;
-    let ma = process.env["TEST"] = es + "test";;
+    let es = process.env["TEST"];
+    let ma = process.env["TEST"] = es + "test";
   }
 
   static async fileTest(args: string[]): Promise<void> {
@@ -116,8 +116,8 @@ export default class Client {
   }
 
   static async logerTest(args: string[]): Promise<void> {
+    console.info(`test:${args[0]}`);
     console.log("test");
-    console.info("test");
     console.warn("test");
     console.debug("test");
     console.error("test");
@@ -323,7 +323,7 @@ export default class Client {
 
     }
 
-    $dara.sleep(a);
+    await $dara.sleep(a);
     let defaultVal = args[0] || args[1];
     if (defaultVal === b) {
       return ;
