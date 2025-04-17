@@ -314,8 +314,8 @@ export default class Client {
         key: "value",
       };
       let obj : {[key: string]: any} = maps;
-      let ws = Writable.from(obj);
-      let rs = Readable.from(maps);
+      let ws = obj instanceof Writable ? obj : Writable.from(obj);
+      let rs = maps instanceof Readable ? maps : Readable.from(maps);
       data = rs.read(30);
       if (!$dara.isNull(data)) {
         ws.write(data);
