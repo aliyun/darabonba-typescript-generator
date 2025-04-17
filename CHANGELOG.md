@@ -1,5 +1,9 @@
 # ChangeLog
 
+## 2.0.5 - 2025-04-17
+
+- fix the stream assert generate error.
+
 ## 2.0.3 - 2024-12-06
 
 - fix the aliasId from inner module.
