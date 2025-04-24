@@ -1,7 +1,7 @@
 // This file is auto-generated, don't edit it
-import User from './model/user';
-import Util from './lib/util';
 import * as $dara from '@darabonba/typescript';
+import Util from './lib/util';
+
 
 
 export default class Client {

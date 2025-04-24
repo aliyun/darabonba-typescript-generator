@@ -1,7 +1,8 @@
 // This file is auto-generated, don't edit it
-import Source, * as $Source from '@scope/module';
-import LocalSource, * as $LocalSource from '@scope/localModule';
 import * as $dara from '@darabonba/typescript';
+import Source, * as $Source from '@scope/module';
+import * as $LocalSource from '@scope/localModule';
+
 
 
 export default class Client {

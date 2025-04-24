@@ -2,6 +2,7 @@
 import * as $dara from '@darabonba/typescript';
 
 
+
 export default class Client {
 
   static *test1(): Generator<string, any, unknown> {

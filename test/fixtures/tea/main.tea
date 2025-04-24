@@ -1,5 +1,6 @@
 import Source;
 import Source.Util as SourceUtil;
+import Source.Util2;
 import LocalSource;
 
 type @id = [ string ];
@@ -12,6 +13,7 @@ init(id: [ string ], str: string) {
 }
 
 static function Sample(client: Source): void {
+    Util2.test1();
     var a:SourceUtil.M = SourceUtil.test1();
     var runtime = new Source.RuntimeObject{};
     var request = new LocalSource.Request{

@@ -1,37 +1,11 @@
 // This file is auto-generated, don't edit it
-import OSS, * as $OSS from '@scope/name';
 import * as $dara from '@darabonba/typescript';
 import * as http from 'http';
+import OSS from '@scope/name';
 
-export class M extends $dara.Model {
-  a?: http.ClientRequest;
-  b?: string;
-  c?: $dara.Model;
-  static names(): { [key: string]: string } {
-    return {
-      a: 'a',
-      b: 'b',
-      c: 'c',
-    };
-  }
 
-  static types(): { [key: string]: any } {
-    return {
-      a: http.ClientRequest,
-      b: 'string',
-      c: $dara.Model,
-    };
-  }
-
-  validate() {
-    super.validate();
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
+import * as $_model from './models/model';
+export * from './models/model';
 
 export default class Client {
   _vid: http.ClientRequest;
@@ -45,7 +19,7 @@ export default class Client {
 
   async main(test1: http.ClientRequest, test2: string): Promise<void> {
     let oss = new OSS(test1);
-    let m = new M({
+    let m = new $_model.M({
       a: test1,
       b: test2,
     });

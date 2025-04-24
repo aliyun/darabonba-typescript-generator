@@ -1,7 +1,8 @@
 import Source;
 
 model M {
-  subM: {}
+  subM: {},
+  self: M,
 }
 
 model MyModel {

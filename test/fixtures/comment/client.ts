@@ -1,123 +1,9 @@
 // This file is auto-generated, don't edit it
-// top comment
-/**
- * @remarks
- * top annotation
- */
-// import comment
-import Source from '@scope/module';
 import * as $dara from '@darabonba/typescript';
 
-/**
- * @remarks
- * TestModel
- */
-export class Test1 extends $dara.Model {
-  /**
-   * @remarks
-   * test desc
-   */
-  test: string;
-  /**
-   * @remarks
-   * test2 desc
-   */
-  //model的test back comment
-  test2: string;
-  //model的test2 back comment
-  static names(): { [key: string]: string } {
-    return {
-      test: 'test',
-      test2: 'test2',
-    };
-  }
 
-  static types(): { [key: string]: any } {
-    return {
-      test: 'string',
-      test2: 'string',
-    };
-  }
-
-  validate() {
-    $dara.Model.validateRequired("test", this.test);
-    $dara.Model.validateRequired("test2", this.test2);
-    super.validate();
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * @remarks
- * TestModel2
- */
-export class Test2 extends $dara.Model {
-  /**
-   * @remarks
-   * test desc
-   */
-  // model的test front comment
-  test: string;
-  /**
-   * @remarks
-   * test2 desc
-   */
-  // model的test front comment
-  test2: string;
-  static names(): { [key: string]: string } {
-    return {
-      test: 'test',
-      test2: 'test2',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      test: 'string',
-      test2: 'string',
-    };
-  }
-
-  validate() {
-    $dara.Model.validateRequired("test", this.test);
-    $dara.Model.validateRequired("test2", this.test2);
-    super.validate();
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * @remarks
- * TestModel3
- */
-export class Test3 extends $dara.Model {
-  // empty comment1
-  // empy comment2
-  static names(): { [key: string]: string } {
-    return {
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-    };
-  }
-
-  validate() {
-    super.validate();
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
+import * as $_model from './models/model';
+export * from './models/model';
 
 export default class Client {
   // type's comment
@@ -132,7 +18,7 @@ export default class Client {
     // string declate comment
     let str = "sss";
     // new model instance comment
-    let modelInstance = new Test1({
+    let modelInstance = new $_model.Test1({
       test: "test",
       //test declare back comment
       test2: "test2",
@@ -176,7 +62,7 @@ export default class Client {
       try {
         let request_ = new $dara.Request();
         // new model instance comment
-        let modelInstance = new Test1({
+        let modelInstance = new $_model.Test1({
           // test declare front comment
           test: "test",
           // test2 declare front comment
@@ -234,7 +120,7 @@ export default class Client {
       try {
         let request_ = new $dara.Request();
         // new model instance comment
-        let modelInstance = new Test3({ 
+        let modelInstance = new $_model.Test3({ 
           //empty model 
         });
         // boolean declare comment

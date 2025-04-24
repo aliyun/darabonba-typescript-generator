@@ -3,6 +3,7 @@ import { Readable, Writable } from 'stream';
 import * as $dara from '@darabonba/typescript';
 
 
+
 export default class Client {
 
   static async arrayTest(args: string[]): Promise<void> {
@@ -109,7 +110,7 @@ export default class Client {
         key6: "321",
       },
     };
-    let ms = JSON.stringify(m);
+    let ms = typeof m === "string" ? m : JSON.stringify(m);
     let ma = JSON.parse(ms);
     let arrStr = "[1,2,3,4]";
     let arr = JSON.parse(arrStr);
