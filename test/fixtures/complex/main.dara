@@ -43,6 +43,7 @@ If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch
     value: [ string ],
     extra: map[string] string
   },
+  sourceConfig: Source.Config,
   part?: [
     {
       partNumber?: string(description='PartNumber', name='PartNumber')

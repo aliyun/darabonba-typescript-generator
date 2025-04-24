@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "main": "./import.tea",
   "exports": {
-    "Util": "./util.tea"
+    "Util": "./util.tea",
+    "Util2": "./util2.tea"
   },
   "java": {
     "package": "com.import"

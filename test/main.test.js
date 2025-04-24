@@ -8,6 +8,26 @@ const DSL = require('@darabonba/parser');
 
 let Generator = require('../lib/generator');
 
+function checkWithSuffix(expectedDir, outputDir, suffix) {
+  if(!fs.existsSync(outputDir)) {
+    assert.ok(false);
+  }
+  const files = fs.readdirSync(outputDir, { withFileTypes: true });
+  
+  for (const file of files) {
+    const filePath = path.join(outputDir, file.name);
+
+    if (file.isDirectory()) {
+      checkWithSuffix(path.join(expectedDir, file.name), filePath, suffix);
+    } else if (file.name.endsWith(suffix)) {
+      const expectedPath = path.join(expectedDir, file.name);
+      const expected = fs.readFileSync(expectedPath, 'utf8');
+      const actual = fs.readFileSync(filePath, 'utf8');
+      assert.deepStrictEqual(actual, expected);
+    }
+  }
+}
+
 function check(mainFilePath, outputDir, expectedPath, pkgInfo = {}) {
   const generator = new Generator({
     outputDir,
@@ -20,6 +40,7 @@ function check(mainFilePath, outputDir, expectedPath, pkgInfo = {}) {
   const clientPath = path.join(outputDir, 'src/client.ts');
   const expected = fs.readFileSync(expectedPath, 'utf8');
   assert.deepStrictEqual(fs.readFileSync(clientPath, 'utf8'), expected);
+  checkWithSuffix(path.dirname(expectedPath), path.dirname(clientPath), '.ts');
 }
 
 describe('new Generator', function() {
@@ -141,26 +162,8 @@ describe('new Generator', function() {
     const dsl = fs.readFileSync(mainFilePath, 'utf8');
     const ast = DSL.parse(dsl, mainFilePath);
     generator.visit(ast);
-    const mainPath = path.join(outputDir, 'src/client.ts');
-    const apiPath = path.join(outputDir, 'src/api.ts');
-    const modelPath = path.join(outputDir, 'src/model/user.ts');
-    const utilPath = path.join(outputDir, 'src/lib/util.ts');
-    const overwritePath = path.join(outputDir, 'src/overwrite.ts');
-    const expectedMainPath = path.join(__dirname, 'fixtures/multi/sdk/client.ts');
-    const expectedModelPath = path.join(__dirname, 'fixtures/multi/sdk/user.ts');
-    const expectedUtilPath = path.join(__dirname, 'fixtures/multi/sdk/util.ts');
-    const expectedApiPath = path.join(__dirname, 'fixtures/multi/sdk/api.ts');
     
-    const expectedMain = fs.readFileSync(expectedMainPath, 'utf8');
-    assert.deepStrictEqual(fs.readFileSync(mainPath, 'utf8'), expectedMain);
-    const expectedModel = fs.readFileSync(expectedModelPath, 'utf8');
-    assert.deepStrictEqual(fs.readFileSync(modelPath, 'utf8'), expectedModel);
-    const expectedUtil = fs.readFileSync(expectedUtilPath, 'utf8');
-    assert.deepStrictEqual(fs.readFileSync(utilPath, 'utf8'), expectedUtil);
-    const expectedApi = fs.readFileSync(expectedApiPath, 'utf8');
-    assert.deepStrictEqual(fs.readFileSync(apiPath, 'utf8'), expectedApi);
-
-    assert.deepStrictEqual(fs.readFileSync(overwritePath, 'utf8'), expectedOverwrite);
+    checkWithSuffix(path.join(__dirname, 'fixtures/multi/sdk'), path.join(__dirname, 'output/multi/src'), '.ts');
   });
 
   it('typedef should ok', function () {

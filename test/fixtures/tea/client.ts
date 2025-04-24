@@ -1,8 +1,10 @@
 // This file is auto-generated, don't edit it
-import Source, * as $Source from '@scope/module';
-import { Util as SourceUtil, $Util as $SourceUtil } from '@scope/module';
-import LocalSource, * as $LocalSource from '@scope/localModule';
 import * as $dara from '@darabonba/typescript';
+import Source, * as $Source from '@scope/module';
+import { Util as SourceUtil, $Util as $SourceUtil }from '@scope/module';
+import { Util2 }from '@scope/module';
+import * as $LocalSource from '@scope/localModule';
+
 
 
 export default class Client {
@@ -16,6 +18,7 @@ export default class Client {
 
 
   static Sample(client: Source): void {
+    Util2.test1();
     let a : $SourceUtil.M = SourceUtil.test1();
     let runtime = new $Source.RuntimeObject({ });
     let request = new $LocalSource.Request({

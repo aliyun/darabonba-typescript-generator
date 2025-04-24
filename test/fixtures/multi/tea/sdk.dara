@@ -5,6 +5,24 @@ import "./overwrite" Overwrite;
 
 type @user = User.Info
 
+model TestModelDir  {
+    test: number,
+    m: User.Info
+}
+
+model TestModelDIR  {
+    test: string,
+    a: any,
+}
+
+exception err {
+    test: string,
+}
+
+exception ERR {
+    test: number,
+}
+
 init(){
     Overwrite.test();
     @user = new User.Info{
