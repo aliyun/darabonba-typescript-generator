@@ -1,5 +1,9 @@
 # ChangeLog
 
+## 2.1.0 - 2025-04-17
+
+- Improve the model & exception structure.
+
 ## 2.0.5 - 2025-04-17
 
 - fix the stream assert generate error.
