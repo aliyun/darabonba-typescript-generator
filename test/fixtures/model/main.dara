@@ -5,6 +5,10 @@ model M {
   self: M,
 }
 
+model Model {
+  stringfield: string,
+}
+
 model MyModel {
   stringfield: string,
   bytesfield: bytes,
