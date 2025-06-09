@@ -1,5 +1,9 @@
 # ChangeLog
 
+## 1.1.7 - 2025-06-09
+
+- support sub models in each others .
+
 ## 1.1.6 - 2024-07-22
 
 - support reference doc .
