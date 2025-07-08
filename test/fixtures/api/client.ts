@@ -44,8 +44,8 @@ export default class Client {
         request_.headers = {
           host: "www.test.com",
         };
-        let response_ = await $dara.doAction(request_, _runtime);
         _lastRequest = request_;
+        let response_ = await $dara.doAction(request_, _runtime);
         _lastResponse = response_;
 
         return ;

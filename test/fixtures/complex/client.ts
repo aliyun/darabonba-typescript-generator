@@ -58,8 +58,8 @@ export default class Client extends Source {
           ...request.header,
         });
         request_.body = Source.body();
-        let response_ = await $dara.doAction(request_, _runtime);
         _lastRequest = request_;
+        let response_ = await $dara.doAction(request_, _runtime);
         _lastResponse = response_;
 
         if (true && true) {
