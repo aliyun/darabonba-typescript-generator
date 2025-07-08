@@ -72,8 +72,8 @@ export default class Client {
         let num = 123;
         // static function call comment
         Client.staticFunc();
-        let response_ = await $dara.doAction(request_, _runtime);
         _lastRequest = request_;
+        let response_ = await $dara.doAction(request_, _runtime);
         _lastResponse = response_;
 
         // static async function call
@@ -134,8 +134,8 @@ export default class Client {
         // api function call comment
         await this.testAPI();
         // back comment
-        let response_ = await $dara.doAction(request_, _runtime);
         _lastRequest = request_;
+        let response_ = await $dara.doAction(request_, _runtime);
         _lastResponse = response_;
 
         // empty return comment

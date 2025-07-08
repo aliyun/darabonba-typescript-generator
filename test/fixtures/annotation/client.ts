@@ -37,8 +37,8 @@ export default class Client {
       _retriesAttempted = _retriesAttempted + 1;
       try {
         let request_ = new $dara.Request();
-        let response_ = await $dara.doAction(request_, _runtime);
         _lastRequest = request_;
+        let response_ = await $dara.doAction(request_, _runtime);
         _lastResponse = response_;
 
         return ;

@@ -38,8 +38,8 @@ export default class Client {
           accept: "application/json",
         };
         request_.query = Util.getQuery();
-        let response_ = await $dara.doAction(request_, _runtime);
         _lastRequest = request_;
+        let response_ = await $dara.doAction(request_, _runtime);
         _lastResponse = response_;
 
         return response_.statusCode;
