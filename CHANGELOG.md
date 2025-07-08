@@ -1,5 +1,9 @@
 # ChangeLog
 
+## 2.1.2 - 2025-07-08
+
+- Fixed the lastRequest position.
+
 ## 2.1.0 - 2025-04-17
 
 - Improve the model & exception structure.
