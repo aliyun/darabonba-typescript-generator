@@ -1,12 +1,54 @@
 // This file is auto-generated, don't edit it
 import { Readable } from 'stream';
 import * as $dara from '@darabonba/typescript';
-import { MyModelSubmodel } from "./MyModelSubmodel";
-import { MyModelSubarraymodel } from "./MyModelSubarraymodel";
 import { M } from "./M";
-import { MSubM } from "./MsubM";
+import { MSubM } from "./M";
 import Source, * as $Source from '@scope/name';
 
+
+export class MyModelSubmodel extends $dara.Model {
+  stringfield: string;
+  static names(): { [key: string]: string } {
+    return {
+      stringfield: 'stringfield',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      stringfield: 'string',
+    };
+  }
+
+  validate() {
+    $dara.Model.validateRequired("stringfield", this.stringfield);
+    super.validate();
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class MyModelSubarraymodel extends $dara.Model {
+  static names(): { [key: string]: string } {
+    return {
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+    };
+  }
+
+  validate() {
+    super.validate();
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
 
 export class MyModel extends $dara.Model {
   stringfield: string;

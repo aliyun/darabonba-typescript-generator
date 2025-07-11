@@ -2,17 +2,6 @@
 import * as $dara from '@darabonba/typescript';
 
 
-export class ERRError extends $dara.BaseError {
-  test: number;
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-    this.name = "ERRError";
-    Object.setPrototypeOf(this, ERRError.prototype);
-    this.test = map.test;
-  }
-}
-
 export class ErrError extends $dara.BaseError {
   test: string;
 
@@ -20,6 +9,17 @@ export class ErrError extends $dara.BaseError {
     super(map);
     this.name = "ErrError";
     Object.setPrototypeOf(this, ErrError.prototype);
+    this.test = map.test;
+  }
+}
+
+export class ERRError extends $dara.BaseError {
+  test: number;
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+    this.name = "ERRError";
+    Object.setPrototypeOf(this, ERRError.prototype);
     this.test = map.test;
   }
 }

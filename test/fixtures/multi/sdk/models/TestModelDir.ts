@@ -3,34 +3,6 @@ import * as $dara from '@darabonba/typescript';
 import * as $User from './model/user';
 
 
-export class TestModelDIR extends $dara.Model {
-  test: string;
-  a: any;
-  static names(): { [key: string]: string } {
-    return {
-      test: 'test',
-      a: 'a',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      test: 'string',
-      a: 'any',
-    };
-  }
-
-  validate() {
-    $dara.Model.validateRequired("test", this.test);
-    $dara.Model.validateRequired("a", this.a);
-    super.validate();
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
 export class TestModelDir extends $dara.Model {
   test: number;
   m: $User.Info;
@@ -54,6 +26,34 @@ export class TestModelDir extends $dara.Model {
       (this.m as any).validate();
     }
     $dara.Model.validateRequired("m", this.m);
+    super.validate();
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class TestModelDIR extends $dara.Model {
+  test: string;
+  a: any;
+  static names(): { [key: string]: string } {
+    return {
+      test: 'test',
+      a: 'a',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      test: 'string',
+      a: 'any',
+    };
+  }
+
+  validate() {
+    $dara.Model.validateRequired("test", this.test);
+    $dara.Model.validateRequired("a", this.a);
     super.validate();
   }
 
