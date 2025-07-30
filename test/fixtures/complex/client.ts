@@ -255,6 +255,19 @@ export default class Client extends Source {
     new $_model.ComplexRequestHeader({ });
   }
 
+  groupOp(): boolean {
+    let a = "1234";
+    if (!(a == "1234")) {
+      return true;
+    }
+
+    if (!(a === "1234")) {
+      return true;
+    }
+
+    return false;
+  }
+
   async tryCatch(): Promise<void> {
     try {
       let str = await this.TemplateString();

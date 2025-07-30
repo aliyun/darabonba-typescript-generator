@@ -231,6 +231,19 @@ async function emptyModel(): void {
   new ComplexRequest.header;
 }
 
+function groupOp(): boolean {
+  var a = "1234";
+  if(!a.equals("1234")) {
+    return true;
+  }
+
+  if(!$equal(a, "1234")) {
+    return true;
+  }
+
+  return false;
+}
+
 async function tryCatch(): void {
   try {
     var str = TemplateString();
