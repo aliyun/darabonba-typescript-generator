@@ -272,20 +272,16 @@ export default class Client extends Source {
     try {
       let str = await this.TemplateString();
     } catch (__err) {
-      if (__err instanceof $dara.BaseError) {
-        const err = __err;
-        let error = err;
-      }
+      const err = __err;
+      let error = err;
     } finally {
       let final = "ok";
     }    
     try {
       let strNoFinal = await this.TemplateString();
     } catch (__err) {
-      if (__err instanceof $dara.BaseError) {
-        const e = __err;
-        let errorNoFinal = e;
-      }
+      const e = __err;
+      let errorNoFinal = e;
     }    
     try {
       let strNoCatch = await this.TemplateString();
@@ -327,19 +323,20 @@ export default class Client extends Source {
       if (__err instanceof $_error.Err1Error) {
         const err = __err;
         console.log(err.name);
+        return;
       }
       if (__err instanceof $_error.Err2Error) {
         const err = __err;
         console.log(err.name);
+        return;
       }
       if (__err instanceof $Source.Err3Error) {
         const err = __err;
         console.log(err.name);
+        return;
       }
-      if (__err instanceof $dara.BaseError) {
-        const err = __err;
-        console.log(err.name);
-      }
+      const err = __err;
+      console.log(err.name);
     } finally {
       let final = "ok";
     }    
